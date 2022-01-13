@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import Models.Usuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,13 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author rodri
  */
-@WebServlet(name = "sr_prueba", urlPatterns = {"/sr_prueba"})
-public class sr_prueba extends HttpServlet {
+@WebServlet(name = "servlet_login", urlPatterns = {"/servlet_login"})
+public class servlet_login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,25 +36,38 @@ public class sr_prueba extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet sr_prueba</title>");   
+            Usuarios users = new Usuarios();           
+             String user=request.getParameter("txt_usuario");
+             String pass=request.getParameter("txt_pass");
+             String key=request.getParameter("txt_key");
+ 
+
+            if (request.getParameter("Ingresar") != null) {
+                if(users.ValidarUserPassword(user,pass,key) > 0) {
+                    
+                    HttpSession actual = request.getSession(true);
+                    actual.setAttribute("Logueado", user);
+                    
+                    response.sendRedirect("/Tienda/home-admin");
+                }
+                else {
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>USUARIO NO ENCONTRADO</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    
+                    out.println("<h1>USUARIO NO ENCONTRADO</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
+                }
+            }
             
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet sr_prueba at " + request.getContextPath() + "</h1>");
-            
-             out.println("<h1>Servlet sr_prueba at " + request.getContextPath() + "</h1>");
-             if("agregar".equals(request.getParameter("btn_agregar"))){
-               
-               int id_producto=Integer.parseInt(request.getParameter("txt_id_Marcas"));
-                    //response.sendRedirect("productoDetails.jsp"); 
-                     request.setAttribute("id_producto",id_producto );
-                  request.getRequestDispatcher("productoDetails.jsp").forward(request, response);
-           }
-            out.println("</body>");
-            out.println("</html>");
+            else if(request.getParameter("cerrarsesion") != null) {
+                request.getSession().removeAttribute("Logueado");
+              response.sendRedirect("/Tienda/admin");
+            }
         }
     }
 

@@ -68,8 +68,8 @@ button:hover {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);
-  background: linear-gradient(to right, #00dbde, #fc00ff);
+  background: -webkit-linear-gradient(147deg, #000000 0%, #612f17 74%);
+  background: linear-gradient(147deg, #000000 0%, #612f17 74%);
 }
 
 .wrap-login {
@@ -199,10 +199,10 @@ button:hover {
   transition: all 0.4s;
 
   background: #6a7dfe;
-  background: -webkit-linear-gradient(left, #21d4fd, #b721ff);
-  background: -o-linear-gradient(left, #21d4fd, #b721ff);
-  background: -moz-linear-gradient(left, #21d4fd, #b721ff);
-  background: linear-gradient(left, #21d4fd, #b721ff);
+  background: -webkit-linear-gradient(147deg, #FBD967 0%, #612f17 74%);;
+  background: -o-linear-gradient(147deg, #FBD967 0%, #612f17 74%);;
+  background: -moz-linear-gradient(147deg, #FBD967 0%, #612f17 74%);;
+  background: linear-gradient(147deg, #FBD967 0%, #612f17 74%);;
 }
 
 .focus-efecto::after {
@@ -273,10 +273,10 @@ button:hover {
   width: 300%;
   height: 100%;
   background: #a64bf4;
-  background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
-  background: -o-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
-  background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
-  background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+  background: -webkit-linear-gradient(147deg, #FBD967 0%, #612f17 74%);
+  background: -o-linear-gradient(147deg, #FBD967 0%, #612f17 74%);
+  background: -moz-linear-gradient(147deg, #FBD967 0%, #612f17 74%);
+  background: linear-gradient(147deg, #FBD967 0%, #612f17 74%);
   top: 0;
   left: -100%;
 

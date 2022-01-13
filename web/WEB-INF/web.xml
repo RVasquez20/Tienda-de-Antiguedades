@@ -50,4 +50,14 @@
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     
+     <servlet>
+        <servlet-name>Principal</servlet-name>
+        <jsp-file>/Principal.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Principal</servlet-name>
+        <url-pattern>/home-admin</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
