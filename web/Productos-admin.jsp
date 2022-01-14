@@ -3,28 +3,21 @@
     Created on : 18/09/2020, 10:43:41 PM
     Author     : cindy
 --%>
+<%@page import="Models.marcasAdmin"%>
 <%
     HttpSession actual = request.getSession(true);
-    String usuario = (String) actual.getAttribute("Logueado");
-    String nombres = (String) actual.getAttribute("nom");
-    String email = (String) actual.getAttribute("emai");
-    String profile = (String) actual.getAttribute("Ft");
-    String Marca = (String) actual.getAttribute("mar");
-    String Produ = (String) actual.getAttribute("pr");
-    String client = (String) actual.getAttribute("cl");
-    String compdet = (String) actual.getAttribute("cd");
-    String Empl = (String) actual.getAttribute("em");
-    String tipo = (String) actual.getAttribute("T");
-    String Prove = (String) actual.getAttribute("pro");
-    String Puest = (String) actual.getAttribute("pues");
-    String Vendde = (String) actual.getAttribute("vende");
-     String nuevo = (String) actual.getAttribute("nu");
+    String Usuario = (String) actual.getAttribute("Logueado");
+    String Nombre = (String) actual.getAttribute("name");
+    String Apellido = (String) actual.getAttribute("lastName");
+    int accessMarcas = (int) actual.getAttribute("accessMarcas");
+    int accessProducts = (int) actual.getAttribute("accessProducts");
+    int accessCategories = (int) actual.getAttribute("accessCategories");
+
+    int accessImages = (int) actual.getAttribute("accessImages");
     session.setMaxInactiveInterval(900);
-    if ((actual.getAttribute("Logueado") != null) && ((tipo.equals("ADMIN")||Produ!=null))) {
+      if ((actual.getAttribute("Logueado") != null)) {
 %>
 <%@page import="java.util.HashMap"%>
-<%@page import="Modelo.marcas"%>
-<%@page import="Modelo.productos"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- <-% 
@@ -35,14 +28,17 @@ String variable = (String)request.getAttribute("txt_locale");
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-       <link rel="stylesheet" href="assets/css/main.css" />
-        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+       <link rel="stylesheet" href="Contact/css/main.css" />
+        <noscript><link rel="stylesheet" href="Contact/css/noscript.css" /></noscript>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="CSS/comun.css">
-        <script src="JS/AllInOne.js"></script>
+        <link rel="stylesheet" type="text/css" href="Contact/css/comun.css">
+        <script src="https://kit.fontawesome.com/d34e9eb680.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+
+        <script src="assets/js/AllInOne.js" type="text/javascript"></script>
         <script>
         $(document).ready(function () {
             
@@ -56,21 +52,18 @@ String variable = (String)request.getAttribute("txt_locale");
         <title>Productos</title>
     </head>
     
-    <body class="is-preload">
+    <body style="background: #1b1f22;">
         <!-- Wrapper -->
-        <div id="wrapper">
-            <script src="//code.tidio.co/d8ipvm98jajzeh4xydviesl213g21mia.js" async></script>
+        <div id="wrapper" >
             <!-- Header -->
             <header id="header">
                 <div class="dropdown">
-                    <button id="btn_sesion" type="button" class="btn btn-outline-light" dropdown-toggle="dropdown" style="border:none;" data-toggle="dropdown">
-                        <img src="sources/<%=profile%>" style="width: 60px; height: 60px; border-radius: 2em;"/>   
-                        <span id="nombre_sesion" class="navbarr-brand"><%=nombres%></span>
+                    <button id="btn_sesion" type="button"  style="font-weight: 500;border:none;padding: 1rem;border-radius: 5px;" data-toggle="dropdown">
+                        <%=Usuario%>
                     </button>
                     <div id="dropdown_menu" class="dropdown-menu text-center" style="font-size: 22px;">
 
-                        <span class="dropdown-item"><%=usuario%></span>
-                        <span class="dropdown-item"><%=email%></span>
+                           <span class="dropdown-item"><%=Nombre%> <%=Apellido%></span>
                         <form action="sr_login" method="post">
                             <h6 class="text-muted"><input type="submit" value="Cerrar Sesion" class="btn btn-dark" id="cerrarsesion" name="cerrarsesion"/></h6>
                         </form>
@@ -79,7 +72,8 @@ String variable = (String)request.getAttribute("txt_locale");
 
                 </div>
                 <div class="logo">
-                    <span ><img src="CSS/Logos/eme.svg" style="max-width: 60px; max-height: 60px;margin-right:5px; "></span>
+                  
+                   <i class="fas fa-house-user fa-3x" style="color: white; margin-top: 20px;"></i>
                 </div>
                 <div class="content">
                     <div class="inner">
@@ -107,7 +101,7 @@ String variable = (String)request.getAttribute("txt_locale");
                 <label><b>Marca</b></label>
                 <select name="box_marcas" id="box_marcas" class="form-control">
                     <%
-                    marcas marca=new marcas();
+                    marcasAdmin marca=new marcasAdmin();
                     HashMap<String,String> combo=marca.box_marcas();
                     out.println("<option value='0'>Seleccione</option>");
                     for (String i: combo.keySet()) {
@@ -116,23 +110,31 @@ String variable = (String)request.getAttribute("txt_locale");
                     %> 
                 </select><br>
                 <label><b>descripcion</b></label>
-                <input type="text" name="txt_descripcion" class="form-control" id="txt_descripcion" placeholder="Ejemplo:Pan blanco" 
- onkeypress="return text(event);" required><br>
+                <textarea  type="text" name="txt_descripcion" class="form-control" id="txt_descripcion" placeholder="Ejemplo:Pan blanco" 
+                           onkeypress="return text(event);" required></textarea><br>
                 
                 <label><b>Imagen</b></label>
                  <input type="file" id="imagen" name="archivo" class="col-md-8 btn" onchange="cargarArchivo(this)" style="
     color: wheat;">
                  <input type="hidden" id="imagenes" name="imagenes"/>
                                 <div class="clear"></div>
-                 <label><b>Precio Costo</b></label>
-                <input type="money" name="txt_preciocosto" class="form-control" id="txt_preciocosto" placeholder="Ejemplo:12.20"  onkeypress="return decimal(event);" required><br>
-                 <label><b>Precio Venta</b></label>
-                <input type="money" name="txt_precioventa" class="form-control" id="txt_precioventa" placeholder="Ejemplo:12.20"  onkeypress="return decimal(event);" required><br>
-                  <label><b>Existencias</b></label>
+                 
+                               <br><br> <label><b>Existencias</b></label><br><br>
+                  <label><b>Cantidad En Stock</b></label>
                 <input type="number" name="txt_exitencias" class="form-control" id="txt_exitencias" placeholder="Ejemplo:20" onkeypress="return entero(event);" required><br>
-                <label id="lbl_fecha"><b>Fecha de Ingreso</b></label>
-                <input type="datetime" name="txt_FechaIngreso" class="form-control" id="txt_FechaIngreso" value="0" placeholder="Ejemplo:20" required><br>
-               
+                <label><b>Entrega Inmediata</b></label>
+                <select name="drop_Entrega" id="drop_Entrega" class="form-control">
+                    
+                        
+                        <option value='0'>Seleccione</option>
+                        <option value='1'>SI</option>
+                        <option value='2'>NO</option>
+                      
+
+
+                    
+                </select>
+                <br><br>
             <button type="submit" class="btn btn-primary" name="btn_agregar" id="btn_agregar" value="agregar" data-text-loading="Loading..." >Agregar</button>
             <button type="submit" class="btn btn-primary" name="btn_actualizar" id="btn_actualizar" value="modificarguardimagen">Modificar Con misma imagen</button>
             <button type="submit" class="btn btn-primary" name="btn_modificar" id="btn_modificar" value="modificar">Modificar Con distinta imagen</button>
@@ -143,38 +145,23 @@ String variable = (String)request.getAttribute("txt_locale");
                 </div>
                 <nav>
                     <ul>
-                       <%
-
-                           if(Marca!=null){
-                                out.println("<li><a href='Marcas.jsp'>Marcas</a></li><br>");
-                           }
-                           if(Produ!=null){
-                                out.println("<li><a href='Productos.jsp'>Productos</a></li><br>");
-                           }
-                           if(client!=null){
-                                out.println("<li><a href='clientes.jsp'>Clientes</a></li><br>");
-                           }
-                           if(compdet!=null){
-                                out.println("<li><a href='Compras_Detalle.jsp'>Compras Detalle</a></li><br>");
-                           }
-                           if(Empl!=null){
-                                out.println("<li><a href='Empleados.jsp'>Empleados</a></li><br>");
-                           }
-                           if(Prove!=null){
-                                out.println("<li><a href='Proveedores.jsp'>Proveedores</a></li><br>");
-                           }
-                           if(Puest!=null){
-                                out.println("<li><a href='Puestos.jsp'>Puestos</a></li><br>");
-                           }
-                           if(Vendde!=null){
-                                out.println("<li><a href='VentasDetalle.jsp'>Ventas Detalle</a></li><br>");
-                           }
- if(nuevo!=null){
-                                out.println("<li><a href='NuevoAdmin.jsp'>Nuevo Admin</a></li><br>");
-                           }
-
+                 <%
+                            
+           out.println("<li><a href='/Tienda/home-admin'>Inicio</a></li><br>");
+                            
+                            if (accessMarcas == 1) {
+                                out.println("<li><a href='/Tienda/marcas-managment-admin'>Marcas</a></li><br>");
+                            }
+                            if (accessProducts == 1) {
+                                out.println("<li><a href='/Tienda/products-managment-admin'> Productos</a></li><br>");
+                            }
+                            if (accessCategories == 1) {
+                                out.println("<li><a href='/Tienda/categories-managment-admin'> Categorias</a></li><br>");
+                            }
+                             if (accessImages == 1) {
+                                out.println("<li><a href='/Tienda/images-managment-admin'> Imagenes</a></li><br>");
+                            }
                         %>
-                        <!--<li><a href="#elements">Elements</a></li>-->
                     </ul>
                 </nav>
             </header>
@@ -233,7 +220,7 @@ String variable = (String)request.getAttribute("txt_locale");
     <tbody id="tbl_productos">
 
         <%
-        DefaultTableModel tblTabla=new DefaultTableModel();
+       /* DefaultTableModel tblTabla=new DefaultTableModel();
         productos producto=new productos();
         tblTabla=producto.Lista();
         for (int i = 0; i < tblTabla.getRowCount(); i++) {
@@ -247,7 +234,7 @@ String variable = (String)request.getAttribute("txt_locale");
                 out.println("<td>"+tblTabla.getValueAt(i, 7)+"</td>");
                 out.println("<td>"+tblTabla.getValueAt(i, 8)+"</td>");
                 out.println("</tr>");
-            }
+            }*/
         %>
     </tbody>
     
@@ -265,10 +252,12 @@ String variable = (String)request.getAttribute("txt_locale");
                     
 		<!-- Scripts -->
 			
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			 <script src="assets/js/jquery.js"></script>
+        <script src="Contact/css/js/jquery.min.js"></script>
+        <script src="Contact/css/js/browser.min.js"></script>
+        <script src="Contact/css/js/breakpoints.min.js"></script>
+        <script src="Contact/css/js/util.js"></script>
+        <script src="Contact/css/js/main.js"></script>
  <script type="text/javascript">
             $(document).ready(function () {
             $("#lbl_fecha").hide();

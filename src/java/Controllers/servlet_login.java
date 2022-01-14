@@ -8,6 +8,9 @@ package Controllers;
 import Models.Usuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,10 +46,29 @@ public class servlet_login extends HttpServlet {
  
 
             if (request.getParameter("Ingresar") != null) {
-                if(users.ValidarUserPassword(user,pass,key) > 0) {
+                if(users.validarUserPassword(user,pass,key) > 0) {
+                     String nombre=users.name(user);
+                     String apellidos=users.lastName(user);
+                     int accessMarcas=0,accessProducts=0,accessCategories=0,accessImages=0;
+                    try {
+                        accessMarcas=users.accessMarcas(user);
+                   
+                     accessProducts=users.accessProducts(user);
+                     
+                     accessCategories=users.accessCategory(user);
+                     accessImages=users.accessImages(user);
+                      } catch (SQLException ex) {
+                        System.out.println("Error-->"+ex.getMessage());
+                    }
                     
                     HttpSession actual = request.getSession(true);
                     actual.setAttribute("Logueado", user);
+                    actual.setAttribute("name", nombre);
+                    actual.setAttribute("lastName", apellidos);
+                    actual.setAttribute("accessProducts", accessProducts);
+                    actual.setAttribute("accessMarcas", accessMarcas);
+                    actual.setAttribute("accessCategories", accessCategories);
+                    actual.setAttribute("accessImages", accessImages);
                     
                     response.sendRedirect("/Tienda/home-admin");
                 }

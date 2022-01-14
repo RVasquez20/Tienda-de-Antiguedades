@@ -104,16 +104,17 @@ public DefaultTableModel leer(){
  try{
      con = new Conexion();
      con.abrirConexion();
-      String query = "select p.id_Producto as id,c.categoria as categoria,p.imagen_Inicial as url from"
-              + " productos p inner join categoria c on p.id_Categoria=c.id_Category";
+      String query = "select p.id_Producto as id,c.categoria as categoria,p.imagen_Inicial as url,q.cantidadInStock as stock from " +
+" productos p inner join categoria c inner join existencias q on p.id_Categoria=c.id_Category and p.id_Existencia=q.id_Existencia and q.cantidadInStock>0";
       ResultSet consulta = con.conexionbd.createStatement().executeQuery(query);
-      String encabezado[] = {"id","categoria","url"};
+      String encabezado[] = {"id","categoria","url","stock"};
       tabla.setColumnIdentifiers(encabezado);
-      String datos[] = new String[3];
+      String datos[] = new String[4];
       while (consulta.next()){
           datos[0] = consulta.getString("id");
           datos[1] = consulta.getString("categoria");
           datos[2] = consulta.getString("url");
+          datos[3] = consulta.getString("stock");
           tabla.addRow(datos);
       
       }
@@ -153,24 +154,23 @@ public DefaultTableModel leer(){
  try{
      con = new Conexion();
      con.abrirConexion();
-      String query = "select p.id_Producto as id,p.nombre as Producto,m.nombre as Marca,q.existencia as existe,q.cantidadInStock as stock,q.entregaInmediata as inmediato,\n" +
+      String query = "select p.id_Producto as id,p.nombre as Producto,m.nombre as Marca,q.cantidadInStock as stock,q.entregaInmediata as inmediato,\n" +
 "p.descripcion as descripcion,c.categoria as categoria,p.precio as precio " +
 " from productos p inner join categoria c inner join marca m inner join existencias q on p.id_Categoria=c.id_Category " +
 " and m.id_Marca=p.id_Marca and p.id_Existencia=q.id_Existencia where p.id_Producto="+id;
       ResultSet consulta = con.conexionbd.createStatement().executeQuery(query);
-      String encabezado[] = {"id","Producto","Marca","existe","cantidadInStock","inmediato","Descripcion","Categoria","Precio"};
+      String encabezado[] = {"id","Producto","Marca","cantidadInStock","inmediato","Descripcion","Categoria","Precio"};
       tabla.setColumnIdentifiers(encabezado);
-      String datos[] = new String[9];
+      String datos[] = new String[8];
       while (consulta.next()){
           datos[0] = consulta.getString("id");
           datos[1] = consulta.getString("Producto");
           datos[2] = consulta.getString("Marca");
-          datos[3] = consulta.getString("existe");
-          datos[4] = consulta.getString("stock");
-          datos[5] = consulta.getString("inmediato");
-          datos[6] = consulta.getString("descripcion");
-          datos[7] = consulta.getString("categoria");
-          datos[8] = consulta.getString("precio");
+          datos[3] = consulta.getString("stock");
+          datos[4] = consulta.getString("inmediato");
+          datos[5] = consulta.getString("descripcion");
+          datos[6]= consulta.getString("categoria");
+          datos[7] = consulta.getString("precio");
           tabla.addRow(datos);
       
       }

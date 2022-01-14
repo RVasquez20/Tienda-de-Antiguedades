@@ -155,21 +155,14 @@ int id=(int)request.getAttribute("id_producto");
           out.println("<h3>"+tabla.getValueAt(t,1)+"</h3>");
           out.println("<ul>");
           out.println("<li><strong>Marca</strong>: "+tabla.getValueAt(t,2)+"</li>");
-          out.println("<li><strong>Categoria</strong>: "+tabla.getValueAt(t,7)+"</li>");
-          if(tabla.getValueAt(t,3).equals("Si")){
-          out.println("<li><strong>Entrega Inmediata</strong>: "+tabla.getValueAt(t,5)+"</li>");
-          out.println("<li><strong>Cantidad en Stock</strong>: "+tabla.getValueAt(t,4)+"</li>");
+          out.println("<li><strong>Categoria</strong>: "+tabla.getValueAt(t,6)+"</li>");
+          out.println("<li><strong>Entrega Inmediata</strong>: "+tabla.getValueAt(t,4)+"</li>");
+          out.println("<li><strong>Cantidad en Stock</strong>: "+tabla.getValueAt(t,3)+"</li>");
            out.println("<br><br>");
-           out.println("<li><strong>Descripcion</strong>: "+tabla.getValueAt(t,6)+"</li>");
+           out.println("<li><strong>Descripcion</strong>: "+tabla.getValueAt(t,5)+"</li>");
             out.println("<br><br>");
-            out.println("<li style='color:#0d6efd;font-size: 30px;'><strong>Precio: </strong> Q. "+tabla.getValueAt(t,8)+"</li>");
-          }else{
-               out.println("<br><br>");
-              out.println("<li><strong>Descripcion</strong>: "+tabla.getValueAt(t,6)+"</li>");
-               out.println("<br><br>");
-            out.println("<li style='color:red;font-size: 30px;'><strong>No disponible </strong></li>");
-             out.println("<br><br>");
-          }
+            out.println("<li style='color:#0d6efd;font-size: 30px;'><strong>Precio: </strong> Q. "+tabla.getValueAt(t,7)+"</li>");
+          
          
           
      

@@ -40,6 +40,9 @@
         <url-pattern>/contacto</url-pattern>
     </servlet-mapping>
     
+    
+    <!--Mapeo para paginas de administrador-->
+    <!--Login-->
     <servlet>
         <servlet-name>Admin</servlet-name>
         <jsp-file>/Login.jsp</jsp-file>
@@ -49,7 +52,7 @@
         <servlet-name>Admin</servlet-name>
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
-    
+    <!--Pantalla Principal-->
      <servlet>
         <servlet-name>Principal</servlet-name>
         <jsp-file>/Principal.jsp</jsp-file>
@@ -59,5 +62,44 @@
         <servlet-name>Principal</servlet-name>
         <url-pattern>/home-admin</url-pattern>
     </servlet-mapping>
+    <!--Products Managment -->
+    <servlet>
+        <servlet-name>ProductosManagment</servlet-name>
+        <jsp-file>/Productos-admin.jsp</jsp-file>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>ProductosManagment</servlet-name>
+        <url-pattern>/products-managment-admin</url-pattern>
+    </servlet-mapping>
+    <!--Marcas Managment-->
+    <servlet>
+        <servlet-name>MarcasManagment</servlet-name>
+        <jsp-file>/Marcas-admin.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MarcasManagment</servlet-name>
+        <url-pattern>/marcas-managment-admin</url-pattern>
+    </servlet-mapping>
+        <!--Category Managment-->
+    <servlet>
+        <servlet-name>CategoryManagment</servlet-name>
+        <jsp-file>/Category-admin.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>CategoryManagment</servlet-name>
+        <url-pattern>/categories-managment-admin</url-pattern>
+    </servlet-mapping>
+            <!--Images Managment-->
+    <servlet>
+        <servlet-name>ImagesManagment</servlet-name>
+        <jsp-file>/Imagenes-admin.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ImagesManagment</servlet-name>
+        <url-pattern>/images-managment-admin</url-pattern>
+    </servlet-mapping>
 </web-app>

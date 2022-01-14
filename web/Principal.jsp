@@ -9,6 +9,12 @@
 <%
     HttpSession actual = request.getSession(true);
     String Usuario = (String) actual.getAttribute("Logueado");
+    String Nombre = (String) actual.getAttribute("name");
+    String Apellido = (String) actual.getAttribute("lastName");
+    int accessMarcas = (int) actual.getAttribute("accessMarcas");
+    int accessProducts = (int) actual.getAttribute("accessProducts");
+    int accessCategories = (int) actual.getAttribute("accessCategories");
+    int accessImages = (int) actual.getAttribute("accessImages");
 
     session.setMaxInactiveInterval(900);
       if ((actual.getAttribute("Logueado") != null)) {
@@ -36,13 +42,12 @@
             <!-- Header -->
             <header id="header">
                 <div class="dropdown">
-                    <button id="btn_sesion" type="button"  style="border:none;" data-toggle="dropdown">
+                    <button id="btn_sesion" type="button"  style="font-weight: 500;border:none;padding: 1rem;border-radius: 5px;" data-toggle="dropdown">
                         <%=Usuario%>
                     </button>
                     <div id="dropdown_menu" class="dropdown-menu text-center" style="font-size: 22px;">
 
-                        <span class="dropdown-item">Rodrigo</span>
-                        <span class="dropdown-item">Rodrigo@gmail.com</span>
+                        <span class="dropdown-item"><%=Nombre%> <%=Apellido%></span>
                         <form action="servlet_login" method="post">
                             <h6 class="text-muted"><input type="submit" value="Cerrar Sesion" class="btn btn-dark" id="cerrarsesion" name="cerrarsesion"/></h6>
                         </form>
@@ -61,16 +66,20 @@
                 </div>
                 <nav>
                     <ul>
-                      <li><a href='Marcas.jsp'>Marcas</a></li><br>
-                              <li><a href='Productos.jsp'>Productos</a></li><br>
-                              <li><a href='clientes.jsp'>Clientes</a></li><br>
-                              <li><a href='Compras_Detalle.jsp'>Compras Detalle</a></li><br>
-                              <li><a href='Empleados.jsp'>Empleados</a></li><br>
-                              <li><a href='Proveedores.jsp'>Proveedores</a></li><br>
-                              <li><a href='Puestos.jsp'>Puestos</a></li><br>
-                              <li><a href='VentasDetalle.jsp'>Ventas Detalle</a></li><br>
-                              <li><a href='NuevoAdmin.jsp'>Nuevo Admin</a></li><br>
-                        <!--<li><a href="#elements">Elements</a></li>-->
+                      <%
+                       if(accessMarcas==1){
+                           out.println("<li><a href='/Tienda/marcas-managment-admin'>Marcas</a></li><br>");
+                       }
+                       if(accessProducts==1){
+                           out.println("<li><a href='/Tienda/products-managment-admin'> Productos</a></li><br>");
+                       }
+                       if(accessCategories==1){
+                           out.println("<li><a href='/Tienda/categories-managment-admin'> Categorias</a></li><br>");
+                       }
+                        if (accessImages == 1) {
+                                 out.println("<li><a href='/Tienda/images-managment-admin'> Imagenes</a></li><br>");
+                            }
+                      %>
                     </ul>
                 </nav>
             </header>
@@ -81,6 +90,7 @@
        
 
     <!-- BG -->
+    <div id="bg"></div>
     <script src="Contact/css/js/jquery.min.js"></script>
     <script src="Contact/css/js/browser.min.js"></script>
     <script src="Contact/css/js/breakpoints.min.js"></script>
