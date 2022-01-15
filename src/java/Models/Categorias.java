@@ -42,14 +42,14 @@ public class Categorias {
         this.categoria = categoria;
     }
     public HashMap listaDeCategorias(){
-    HashMap<Integer,String> drop = new HashMap();
+    HashMap<String,String> drop = new HashMap();
     try{
         String query ="select id_Category as id,categoria from categoria";
          con = new Conexion();
          con.abrirConexion();
             ResultSet consulta = con.conexionbd.createStatement().executeQuery(query);
             while (consulta.next()){
-            drop.put(consulta.getInt("id"),consulta.getString("categoria"));
+            drop.put(consulta.getString("id"),consulta.getString("categoria"));
             }
          con.cerrarConexion();
     }catch(SQLException ex){

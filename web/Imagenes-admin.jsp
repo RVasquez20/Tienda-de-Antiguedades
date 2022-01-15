@@ -3,6 +3,7 @@
     Created on : 18/09/2020, 10:43:41 PM
     Author     : cindy
 --%>
+<%@page import="Models.Productos"%>
 <%@page import="Models.marcasAdmin"%>
 <%
     HttpSession actual = request.getSession(true);
@@ -42,9 +43,12 @@ String variable = (String)request.getAttribute("txt_locale");
         <script>
         $(document).ready(function () {
             
+            $("#labelPreview").prop("hidden","true");  
+              $("#imagenPrevisualizacion").prop("hidden","true");  
+       $("#preview").prop("hidden","true");  
               $("#btn_modificar").hide();
        $("#btn_eliminar").hide();
-       $("#btn_agregar").show();
+       $("#btn_agregar").hide();
         });
     </script>
 
@@ -64,7 +68,7 @@ String variable = (String)request.getAttribute("txt_locale");
                     <div id="dropdown_menu" class="dropdown-menu text-center" style="font-size: 22px;">
 
                            <span class="dropdown-item"><%=Nombre%> <%=Apellido%></span>
-                        <form action="sr_login" method="post">
+                        <form action="servlet_login" method="post">
                             <h6 class="text-muted"><input type="submit" value="Cerrar Sesion" class="btn btn-dark" id="cerrarsesion" name="cerrarsesion"/></h6>
                         </form>
                     </div>
@@ -90,28 +94,33 @@ String variable = (String)request.getAttribute("txt_locale");
 
  
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Listado de Productos</button>
-         <button type="button" name="btn_nuevoc" id="btn_nuevoc" class="btn btn-info btn-lg"  onclick="LimpiarProductos();">Nuevo</button>
+         <button type="button" name="btn_nuevoc" id="btn_nuevoc" class="btn btn-info btn-lg"  onclick="LimpiarImages();">Nuevo</button>
+         <button type="button" name="btn_actualizarI" id="btn_actualizarI" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#myModal2">Actualizar Imagen</button>
          
-            <form action="sr_productos" method="POST" class="form-group" enctype="multipart/form-data" class="form-horizontal" role="form" name="formulario">
+            <form action="servlet_imagenes" method="POST" class="form-group" enctype="multipart/form-data" class="form-horizontal" role="form" name="formulario">
                   
                 <label><b>id</b></label>
-                <input type="text" name="txt_id" class="form-control" id="txt_id" placeholder="id" value="0" readonly style="max-width: 250px;"><br>
+                <input type="text" name="txt_id" class="form-control" id="txt_id" placeholder="id" value="0"  readonly style="max-width: 250px;"><br>
                 <label><b>Producto</b></label>
                 <input type="text" name="txt_producto" class="form-control" readonly id="txt_producto" placeholder="Ejemplo:Pan" onkeypress="return text(event);" required><br>
                 <label><b>Marca</b></label>
                <input type="text" name="txt_marcas" class="form-control" readonly id="txt_marcas" placeholder="Ejemplo:Pan" onkeypress="return text(event);" required><br>
+               
                 
-                
-                <label><b>Imagen</b></label>
-                 <input type="file" id="imagen" name="archivo" class="col-md-8 btn" onchange="cargarArchivo(this)" style="
+               <label ><b id="labelPreview">Imagen Actual</b></label><br>
+               <img id="preview" style="width: 200px;height: 200px;"/>
+                <br><label><b>Imagen</b></label><br> 
+                <input type="file" id="imagen" name="archivo" class="col-md-8 btn" onchange="cargarArchivo(this)" style="
     color: wheat;">
+                <img id="imagenPrevisualizacion"style="width: 200px;height: 200px;"/>
+                <script src="assets/js/Script.js"></script>
                  <input type="hidden" id="imagenes" name="imagenes"/>
                                 <div class="clear"></div>
                 
-            <button type="submit" class="btn btn-primary" name="btn_agregar" id="btn_agregar" value="agregar" data-text-loading="Loading..." >Agregar</button>
-            <button type="submit" class="btn btn-primary" name="btn_actualizar" id="btn_actualizar" value="modificarguardimagen">Modificar Con misma imagen</button>
-            <button type="submit" class="btn btn-primary" name="btn_modificar" id="btn_modificar" value="modificar">Modificar Con distinta imagen</button>
-            <button type="submit" class="btn btn-primary" name="btn_eliminar" id="btn_eliminar" value="eliminar" onclick="javascript:if(!confirm('¿Desea Eliminar?'))return false" >Eliminar</button>
+            <button type="submit" class="btn btn-primary" name="btn_agregar" id="btn_agregar" value="agregar" data-text-loading="Loading..." >Agregar otra imagen</button>
+            
+            <button type="submit" class="btn btn-primary" name="btn_modificar" id="btn_modificar" value="modificar">Modificar Imagen</button>
+            <button type="submit" class="btn btn-primary" name="btn_eliminar" id="btn_eliminar" value="eliminar" onclick="javascript:if(!confirm('¿Desea Eliminar?'))return false" >Eliminar Imagen</button>
        <input type="hidden" name="nombre" id="file">
             </form>
      </div>
@@ -156,6 +165,8 @@ String variable = (String)request.getAttribute("txt_locale");
 
       <!-- Modal Header -->
       <div class="modal-header text-center">
+          
+          <button type="button"  data-dismiss="modal">&times;</button>
         <h4 class="modal-title text-center">Lista de Productos </h4>
  <form class="mr-sm-2">
                             <input class="form-control" id="myInput" type="text" placeholder="Buscar">
@@ -183,31 +194,96 @@ String variable = (String)request.getAttribute("txt_locale");
         <th>Producto</th>
         <th>Marca</th>
         <th>Descripcion</th>
+        <th>Categoria</th>
         <th>Imagen</th>
-        <th>Precio Costo</th>
-        <th>Precio Venta</th>
-        <th>Existencias</th>
-        <th>Fecha De Ingreso</th>
+        <th>Precio</th>
+        <th>Cantidad en Stock</th>
+        <th>Entrega Inmediata</th>
       </tr>
     </thead>
     <tbody id="tbl_productos">
-
         <%
-       /* DefaultTableModel tblTabla=new DefaultTableModel();
-        productos producto=new productos();
-        tblTabla=producto.Lista();
+        DefaultTableModel tblTabla=new DefaultTableModel();
+        Productos product=new Productos();
+        tblTabla=product.listOfProducts();
         for (int i = 0; i < tblTabla.getRowCount(); i++) {
-                out.println("<tr data-id_productos="+tblTabla.getValueAt(i, 0)+" data-id_marcas="+tblTabla.getValueAt(i, 9)+" data-idimagen="+ tblTabla.getValueAt(i, 4) +">");
+                out.println("<tr data-id_producto="+tblTabla.getValueAt(i, 0)+" data-id_marca="+tblTabla.getValueAt(i, 2)+
+                        " data-id_imagen="+ tblTabla.getValueAt(i, 7) +" data-id_Existencia="+ tblTabla.getValueAt(i, 9) +
+                        " data-id_Categoria="+ tblTabla.getValueAt(i, 5) +">");
                 out.println("<td>"+tblTabla.getValueAt(i, 1)+"</td>");
-                out.println("<td>"+tblTabla.getValueAt(i, 2)+"</td>");
                 out.println("<td>"+tblTabla.getValueAt(i, 3)+"</td>");
-                out.println("<td><img src='upload/"+tblTabla.getValueAt(i, 4)+"' style='width:100px; height:100px; cursor:pointer' value="+tblTabla.getValueAt(i, 4)+" title="+tblTabla.getValueAt(i, 4)+"></td>");
-                out.println("<td>"+tblTabla.getValueAt(i, 5)+"</td>");
+                out.println("<td>"+tblTabla.getValueAt(i, 4)+"</td>");
                 out.println("<td>"+tblTabla.getValueAt(i, 6)+"</td>");
-                out.println("<td>"+tblTabla.getValueAt(i, 7)+"</td>");
+                out.println("<td><img src='assets/img/"+tblTabla.getValueAt(i, 7)+"' style='width:100px; height:100px; cursor:pointer' value="+tblTabla.getValueAt(i, 7)+" title="+tblTabla.getValueAt(i, 7)+"></td>");
                 out.println("<td>"+tblTabla.getValueAt(i, 8)+"</td>");
+                out.println("<td>"+tblTabla.getValueAt(i, 10)+"</td>");
+                out.println("<td>"+tblTabla.getValueAt(i, 11)+"</td>");
                 out.println("</tr>");
-            }*/
+            }
+        %>
+    </tbody>
+    
+  </table>
+ </div>
+
+ 
+
+    </div>
+  </div>
+</div>
+    
+      <div class="modal" id="myModal2">
+   <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header text-center">
+          
+          <button type="button"  data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Lista de Imagenes </h4>
+ <form class="mr-sm-2">
+                            <input class="form-control" id="myInput2" type="text" placeholder="Buscar">
+                            <br><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><svg width="1.7em" height="1.7em" viewBox="0 0 16 16" class="bi bi-info-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+                                <circle cx="8" cy="4.5" r="1"/>
+                                </svg>&ensp;Ayuda</button>
+                            <div id="demo" class="collapse">
+                                <br><b>Esta busqueda esta basada en cada tipo de columna de la tabla
+                                Si desea regresar a la lista completa de empleados solo debe borrar lo
+                                    buscado :D.</b>
+
+                            </div>
+                        </form>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-center">
+
+         <table class="table table-dark table-hover text-center">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Marca</th>
+        <th>Descripcion</th>   
+        <th>Imagen</th>
+      </tr>
+    </thead>
+    <tbody id="tbl_productos2">
+        <%
+        DefaultTableModel tblTabla2=new DefaultTableModel();
+        Productos product2=new Productos();
+        tblTabla2=product2.listOfImages();
+        for (int i = 0; i < tblTabla2.getRowCount(); i++) {
+                out.println("<tr data-id_producto2="+tblTabla2.getValueAt(i, 0)+" data-id_marca2="+tblTabla2.getValueAt(i, 2)+
+                        " data-id_imagen2="+ tblTabla2.getValueAt(i, 5) +">");
+                out.println("<td>"+tblTabla2.getValueAt(i, 1)+"</td>");
+                out.println("<td>"+tblTabla2.getValueAt(i, 3)+"</td>");
+                out.println("<td>"+tblTabla2.getValueAt(i, 4)+"</td>");
+                out.println("<td><img src='assets/img/"+tblTabla2.getValueAt(i, 5)+"' style='width:100px; height:100px; cursor:pointer' value="+tblTabla2.getValueAt(i, 5)+" title="+tblTabla2.getValueAt(i, 5)+"></td>");
+                out.println("</tr>");
+            }
         %>
     </tbody>
     
@@ -231,84 +307,74 @@ String variable = (String)request.getAttribute("txt_locale");
         <script src="Contact/css/js/breakpoints.min.js"></script>
         <script src="Contact/css/js/util.js"></script>
         <script src="Contact/css/js/main.js"></script>
- <script type="text/javascript">
-            $(document).ready(function () {
-            $("#lbl_fecha").hide();
-                        $("#txt_FechaIngreso").hide();
-                        $("#btn_agregar").show();
-                        $("#btn_modificar").hide();
-                        $("#btn_actualizar").hide();
-                        $("#btn_eliminar").hide();
-    });
-            
-            </script>
-         <script  type="text/javascript">   
+ 
+            <script  type="text/javascript">   
 $('#tbl_productos').on('click','tr td', function(evt){
  
-   var target,idproducto,idmarcas,descripcion,precio_costo,precio_venta,existencias,producto,fechaingreso,imagen;
+   var target,idproducto,marcas,idcategoria,idexistencia,descripcion,precio,cantidadInStock,
+   producto,inmediato,imagen;
    target = $(event.target);
-    $("#lbl_fecha").show();
-                        $("#txt_FechaIngreso").show();
-                        $("#btn_agregar").hide();
-                        $("#btn_modificar").show();
-                        $("#btn_eliminar").show();
-                         $("#btn_actualizar").show();
-   idproducto = target.parent().data('id_productos');
-  idmarcas = target.parent().data('id_marcas');
+    
+                       
+   idproducto = target.parent().data('id_producto');
+  
+    
    producto=target.parents("tr").find("td").eq(0).html();
-   descripcion=target.parents("tr").find("td").eq(2).html();
-   precio_venta=target.parents("tr").find("td").eq(5).html();
-  precio_costo= target.parents("tr").find("td").eq(4).html();
-  existencias= target.parents("tr").find("td").eq(6).html();
-   fechaingreso=target.parents("tr").find("td").eq(7).html();
-   imagen= target.parents().data('idimagen');
+   marcas=target.parents("tr").find("td").eq(1).html();
+   
    $("#txt_id").val(idproducto);
-    $("#box_marcas").val(idmarcas);
-   $("#txt_producto").val(producto);
-   $("#txt_descripcion").val(descripcion);
-   $("#txt_preciocosto").val(precio_costo);
-   $("#txt_precioventa").val(precio_venta);
-   $("#txt_exitencias").val(existencias);
-   $("#txt_FechaIngreso").val(fechaingreso);
-   $("#imagenes").val(imagen);
-   
-          $('#myModal').modal('hide');
-
+    $("#txt_marcas").val(marcas);
+    $("#txt_producto").val(producto);
   
   
-   
-
-   
-
-
-
-
-
-
-   
+    
 });
 </script>
-<script type="text/javascript">
-      $('#nuevo').click (function(evt){
-    $("#txt_id").val('');
-    $("#box_marcas").val('');
-   $("#txt_producto").val('');
-   $("#txt_descripcion").val('');
-   $("#txt_preciocosto").val('');
-   $("#txt_precioventa").val('');
-   $("#txt_exitencias").val('');
-   $("#txt_FechaIngreso").val('');
-   $("#txt_Imagen").val('');
-   
 
-      });
+          <script  type="text/javascript">   
+$('#tbl_productos2').on('click','tr td', function(evt){
+ 
+   var target,idproducto,marcas,idcategoria,idexistencia,descripcion,precio,cantidadInStock,
+   producto,inmediato,imagen;
+   target = $(event.target);
+    
+                       
+   idproducto = target.parent().data('id_producto2');
+  
+     imagen= target.parents().data('id_imagen2');
+   producto=target.parents("tr").find("td").eq(0).html();
+   marcas=target.parents("tr").find("td").eq(1).html();
+   
+   $("#txt_id").val(idproducto);
+    $("#txt_marcas").val(marcas);
+    $("#txt_producto").val(producto);
+    $("#btn_modificar").show();
+       $("#btn_eliminar").show();
+       $("#btn_agregar").hide();
+       $("#labelPreview").removeAttr('hidden'); 
+        $("#preview").removeAttr('hidden'); 
+  $("#preview").prop("src","assets/img/"+imagen);
+    
+});
 </script>
+
  <script>
         $(document).ready(function () {
             
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
                 $("#tbl_productos tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            
+            $("#myInput2").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#tbl_productos2  tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
                 });
             });

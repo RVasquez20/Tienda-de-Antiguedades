@@ -135,6 +135,7 @@
 
                     <!-- Modal Header -->
                     <div class="modal-header text-center">
+                         <button type="button"  data-dismiss="modal">&times;</button>
                         <h4 class="modal-title text-center">Lista de las Marcas </h4>
                         <form class="mr-sm-2">
                             <input style="color:#FFFFFF;" class="form-control" id="myInput" type="text" placeholder="Buscar">
@@ -209,10 +210,6 @@
 
                                     $("#txt_id_Marcas").val(id);
                                     $("#txt_Marca").val(Marcas);
-                                     $('body').removeClass('modal-open'); 
-                                     $('.modal-backdrop').remove();
-                                     $("#myModal").removeClass('modal');
-                                     $("#myModal").removeClass('show');
 
                                 });
         </script>

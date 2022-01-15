@@ -89,8 +89,8 @@ String filtro="prueba";
                                 <li data-filter="*" class="filter-active">All</li>
                                   <%
                 Categorias categoria=new Categorias();
-               HashMap<Integer,String> dropCategoria = categoria.listaDeCategorias();
-                         for (Integer i: dropCategoria.keySet()){
+               HashMap<String,String> dropCategoria = categoria.listaDeCategorias();
+                         for (String i: dropCategoria.keySet()){
                              out.println("<li data-filter='."+dropCategoria.get(i)+"'>"+dropCategoria.get(i)+"</li>");
                          }
                 %>

@@ -214,21 +214,38 @@ function LimpiarVentasDetalle() {
 function LimpiarProductos() {
      $("#txt_id").val(0);
     $("#box_marcas").val(0);
+    $("#box_Categoria").val(0);
+    $("#drop_Entrega").val(0);
    $("#txt_producto").val('');
    $("#txt_descripcion").val('');
-   $("#txt_preciocosto").val('');
-   $("#txt_precioventa").val('');
+   $("#txt_precio").val('');
    $("#txt_exitencias").val('');
-   $("#txt_Imagen").val('');
-     $("#btn_agregar").show();
-      $("#lbl_fecha").hide();
-                        $("#txt_FechaIngreso").hide();
+   $("#imagenes").val('');
+   $("#imagen").val('');
+   $("#txt_marcas").val('');
+    $("#imagenPrevisualizacion").prop("hidden","true");  
+
+                       
      $("#btn_actualizar").hide();
                         $("#btn_modificar").hide();
                         $("#btn_eliminar").hide();
                         
 };
 
+function LimpiarImages(){
+    $("#txt_id").val(0);
+   $("#txt_producto").val('');
+   $("#txt_marcas").val('');
+   $("#imagenPrevisualizacion").prop("hidden","true");  
+     $("#btn_agregar").show();
+                  $("#preview").removeAttr('src'); 
+                     $("#labelPreview").prop("hidden","true");  
+       $("#preview").prop("hidden","true");  
+       $("#btn_modificar").hide();
+       $("#btn_eliminar").hide();
+       $("#imagenes").val('');
+       $("#imagen").val('');
+}
 
 
 
@@ -245,3 +262,4 @@ function LimpiarVentasDetalleprod() {
     
 
 };
+
