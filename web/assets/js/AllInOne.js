@@ -153,6 +153,16 @@ function LimpiarMarcas() {
    
 };
 
+function LimpiarCategorias() {
+    $("#txt_id_categorias").val(0);
+    $("#txt_categoria").val('');
+
+    $("#btn_agregar").show();
+    $("#btn_modificar").hide();
+    $("#btn_eliminar").hide();
+   
+};
+
 function LimpiarPuestos() {
      $("#txt_id").val(0);
     $("#txt_puestos").val('');
@@ -237,7 +247,7 @@ function LimpiarImages(){
    $("#txt_producto").val('');
    $("#txt_marcas").val('');
    $("#imagenPrevisualizacion").prop("hidden","true");  
-     $("#btn_agregar").show();
+     $("#btn_agregar").hide();
                   $("#preview").removeAttr('src'); 
                      $("#labelPreview").prop("hidden","true");  
        $("#preview").prop("hidden","true");  
@@ -245,6 +255,7 @@ function LimpiarImages(){
        $("#btn_eliminar").hide();
        $("#imagenes").val('');
        $("#imagen").val('');
+              $("#id_imagen").val('');
 }
 
 

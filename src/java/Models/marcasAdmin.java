@@ -10,7 +10,7 @@ import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author cindy
+ * @author rodrigo
  */
 public class marcasAdmin {
     private int idMarca;

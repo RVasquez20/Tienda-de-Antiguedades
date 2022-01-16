@@ -134,17 +134,16 @@ public Productos(int id_producto, int id_marca, int id_categoria,int id_existenc
         try {
             con = new Conexion();
             con.abrirConexion();
-            String query = "select p.id_Producto as id,c.categoria as categoria,p.imagen_Inicial as url,q.cantidadInStock as stock from "
+            String query = "select p.id_Producto as id,c.categoria as categoria,p.imagen_Inicial as url from "
                     + " productos p inner join categoria c inner join existencias q on p.id_Categoria=c.id_Category and p.id_Existencia=q.id_Existencia and q.cantidadInStock>0";
             ResultSet consulta = con.conexionbd.createStatement().executeQuery(query);
-            String encabezado[] = {"id", "categoria", "url", "stock"};
+            String encabezado[] = {"id", "categoria", "url"};
             tabla.setColumnIdentifiers(encabezado);
             String datos[] = new String[4];
             while (consulta.next()) {
                 datos[0] = consulta.getString("id");
                 datos[1] = consulta.getString("categoria");
                 datos[2] = consulta.getString("url");
-                datos[3] = consulta.getString("stock");
                 tabla.addRow(datos);
 
             }
@@ -277,6 +276,36 @@ public Productos(int id_producto, int id_marca, int id_categoria,int id_existenc
             return retorno;
         }
     }
+    
+    /*Cantidad de productos*/
+    public int cantidadProductosExistentes() throws SQLException {
+        int retorno = 0;
+        int exi = 0;
+
+        try {
+            con = new Conexion();
+
+            String query = "select count(*) as cantidad from\n" +
+" productos p inner join categoria c inner join existencias q on p.id_Categoria=c.id_Category \n" +
+" and p.id_Existencia=q.id_Existencia \n" +
+" and q.cantidadInStock>0;";
+            con.abrirConexion();
+
+            ResultSet consulta = con.conexionbd.createStatement().executeQuery(query);
+            while (consulta.next()) {
+                exi = consulta.getInt("cantidad");
+
+            }
+
+            con.cerrarConexion();
+            return exi;
+        } catch (SQLException e) {
+            System.out.println("Error->" + e.getMessage());
+            return retorno;
+        }
+    }
+    
+    
     /*Agregar un producto con su imagen*/
      public int agregarProducto(){
         int retorno=0;
@@ -386,20 +415,20 @@ public Productos(int id_producto, int id_marca, int id_categoria,int id_existenc
         try {
             con = new Conexion();
             con.abrirConexion();
-            String query = "SELECT p.id_Producto as id,p.nombre as nombre,m.id_Marca as id_marca,m.nombre as marca,p.descripcion as descripcion,\n" +
-"i.imagenes as imagen FROM \n" +
+            String query = "SELECT p.id_Producto as id,p.nombre as nombre,m.id_Marca as id_marca,m.nombre as marca,p.descripcion as descripcion,i.id_Imagenes as id_imagen,i.imagenes as imagen FROM " +
 "productos as p inner join marca as m inner join imagenes i on p.id_Marca=m.id_Marca and p.id_Producto=i.id_Producto order by id;";
             ResultSet consulta = con.conexionbd.createStatement().executeQuery(query);
-            String encabezado[] = {"id", "nombre", "id_marca", "marca", "descripcion","imagen"};
+            String encabezado[] = {"id", "nombre", "id_marca", "marca", "descripcion","id_imagen","imagen"};
             tabla.setColumnIdentifiers(encabezado);
-            String datos[] = new String[6];
+            String datos[] = new String[7];
             while (consulta.next()) {
                 datos[0] = consulta.getString("id");
                 datos[1] = consulta.getString("nombre");
                 datos[2] = consulta.getString("id_marca");
                 datos[3] = consulta.getString("marca");
                 datos[4] = consulta.getString("descripcion");
-                datos[5] = consulta.getString("imagen");
+                datos[5] = consulta.getString("id_imagen");
+                datos[6] = consulta.getString("imagen");
                 
                 tabla.addRow(datos);
             }

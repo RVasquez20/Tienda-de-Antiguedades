@@ -16,7 +16,7 @@
 
     int accessImages = (int) actual.getAttribute("accessImages");
     session.setMaxInactiveInterval(900);
-      if ((actual.getAttribute("Logueado") != null)) {
+    if ((actual.getAttribute("Logueado") != null)&&(accessImages!=0)) {
 %>
 <%@page import="java.util.HashMap"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>
@@ -113,8 +113,9 @@ String variable = (String)request.getAttribute("txt_locale");
                 <input type="file" id="imagen" name="archivo" class="col-md-8 btn" onchange="cargarArchivo(this)" style="
     color: wheat;">
                 <img id="imagenPrevisualizacion"style="width: 200px;height: 200px;"/>
-                <script src="assets/js/Script.js"></script>
+                <script src="assets/js/imagenes.js"></script>
                  <input type="hidden" id="imagenes" name="imagenes"/>
+                 <input type="hidden" id="id_imagen" name="id_imagen"/>
                                 <div class="clear"></div>
                 
             <button type="submit" class="btn btn-primary" name="btn_agregar" id="btn_agregar" value="agregar" data-text-loading="Loading..." >Agregar otra imagen</button>
@@ -277,11 +278,11 @@ String variable = (String)request.getAttribute("txt_locale");
         tblTabla2=product2.listOfImages();
         for (int i = 0; i < tblTabla2.getRowCount(); i++) {
                 out.println("<tr data-id_producto2="+tblTabla2.getValueAt(i, 0)+" data-id_marca2="+tblTabla2.getValueAt(i, 2)+
-                        " data-id_imagen2="+ tblTabla2.getValueAt(i, 5) +">");
+                        " data-id_imagen2="+ tblTabla2.getValueAt(i, 6) +" data-id_imagenes="+ tblTabla2.getValueAt(i, 5)+">");
                 out.println("<td>"+tblTabla2.getValueAt(i, 1)+"</td>");
                 out.println("<td>"+tblTabla2.getValueAt(i, 3)+"</td>");
                 out.println("<td>"+tblTabla2.getValueAt(i, 4)+"</td>");
-                out.println("<td><img src='assets/img/"+tblTabla2.getValueAt(i, 5)+"' style='width:100px; height:100px; cursor:pointer' value="+tblTabla2.getValueAt(i, 5)+" title="+tblTabla2.getValueAt(i, 5)+"></td>");
+                out.println("<td><img src='assets/img/"+tblTabla2.getValueAt(i, 6)+"' style='width:100px; height:100px; cursor:pointer' value="+tblTabla2.getValueAt(i, 6)+" title="+tblTabla2.getValueAt(i, 6)+"></td>");
                 out.println("</tr>");
             }
         %>
@@ -334,23 +335,23 @@ $('#tbl_productos').on('click','tr td', function(evt){
           <script  type="text/javascript">   
 $('#tbl_productos2').on('click','tr td', function(evt){
  
-   var target,idproducto,marcas,idcategoria,idexistencia,descripcion,precio,cantidadInStock,
+   var target,idproducto,marcas,id_imagenes,idexistencia,descripcion,precio,cantidadInStock,
    producto,inmediato,imagen;
    target = $(event.target);
     
                        
    idproducto = target.parent().data('id_producto2');
-  
+  id_imagenes=target.parent().data('id_imagenes');
      imagen= target.parents().data('id_imagen2');
    producto=target.parents("tr").find("td").eq(0).html();
    marcas=target.parents("tr").find("td").eq(1).html();
    
    $("#txt_id").val(idproducto);
     $("#txt_marcas").val(marcas);
+    $("#imagenes").val(imagen);
     $("#txt_producto").val(producto);
-    $("#btn_modificar").show();
-       $("#btn_eliminar").show();
-       $("#btn_agregar").hide();
+    $("#id_imagen").val(id_imagenes);
+   $("#btn_eliminar").show();
        $("#labelPreview").removeAttr('hidden'); 
         $("#preview").removeAttr('hidden'); 
   $("#preview").prop("src","assets/img/"+imagen);

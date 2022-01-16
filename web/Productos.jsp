@@ -89,7 +89,7 @@ String filtro="prueba";
                                 <li data-filter="*" class="filter-active">All</li>
                                   <%
                 Categorias categoria=new Categorias();
-               HashMap<String,String> dropCategoria = categoria.listaDeCategorias();
+               HashMap<String,String> dropCategoria = categoria.listadoDeCategoriasConProductos();
                          for (String i: dropCategoria.keySet()){
                              out.println("<li data-filter='."+dropCategoria.get(i)+"'>"+dropCategoria.get(i)+"</li>");
                          }
@@ -103,7 +103,6 @@ String filtro="prueba";
         tabla = producto.leer();
         out.println("<div class='row portfolio-container' data-aos='fade-up'>");
         for (int t=0;t<tabla.getRowCount();t++){
-             if(Integer.parseInt(tabla.getValueAt(t,3).toString())>0){
             out.println(" <form action='sr_prueba' method='post' class='form-group'>");
             out.println("<div class='col-lg-4 col-md-6 portfolio-item "+tabla.getValueAt(t,1)+" '>");
             out.println("<button name='btn_agregar' id='btn_agregar' style='border: none;'  value='agregar' >");
@@ -114,7 +113,6 @@ String filtro="prueba";
             out.println("</button>");
             out.println("</div>");
             out.println("</form>");
-             }
         
         }
         out.println(" </div>");

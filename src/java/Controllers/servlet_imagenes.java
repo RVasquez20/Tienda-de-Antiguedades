@@ -6,7 +6,6 @@
 package Controllers;
 
 import Models.Imagenes;
-import Models.Productos;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,11 +44,13 @@ public class servlet_imagenes extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
+            out.println("<body>");
             String nombre = request.getParameter("nombre");
-          imagen=new Imagenes(Integer.parseInt(request.getParameter("txt_id")),nombre);
+         
          
           
               if("agregar".equals(request.getParameter("btn_agregar"))){
+                   imagen=new Imagenes(Integer.parseInt(request.getParameter("txt_id")),nombre);
                    if(imagen.agregarImagenes()>0){
                    Part archivo = request.getPart("archivo");
                     InputStream is = archivo.getInputStream();
@@ -68,7 +69,41 @@ public class servlet_imagenes extends HttpServlet {
                          out.println("<script>alert('Error');</scrpt>");
                    }
           
-              }
+              } else if ("modificar".equals(request.getParameter("btn_modificar"))) {
+                out.println("<h2>imagenes:"+request.getParameter("imagenes")+"</h2>");
+            out.println("<h2>nombreimagen:"+nombre+"</h2>");
+            out.println("<h2>idimagen:"+Integer.parseInt(request.getParameter("id_imagen"))+"</h2>");
+            out.println("<h2>idproducto:"+Integer.parseInt(request.getParameter("txt_id"))+"</h2>");
+ imagen=new Imagenes(Integer.parseInt(request.getParameter("txt_id")),Integer.parseInt(request.getParameter("id_imagen")),nombre);
+                if (imagen.modificar() > 0) {
+                    Part archivo = request.getPart("archivo");
+                    InputStream is = archivo.getInputStream();
+                    File f = new File("C:/Users/rodri/Documents/GitHub/Tienda de antiguedades/Tienda/web/assets/img/" + nombre);
+                    FileOutputStream ous = new FileOutputStream(f);
+
+                    int dato = is.read();
+                    while (dato != -1) {
+                        ous.write(dato);
+                        dato = is.read();
+                    }
+                    ous.close();
+                    is.close();
+                          response.sendRedirect("/Tienda/images-managment-admin");
+
+                } else {
+                    out.println("<script>alert('Error');</scrpt>");
+                }
+            }else if ("eliminar".equals(request.getParameter("btn_eliminar"))) {
+imagen=new Imagenes(Integer.parseInt(request.getParameter("txt_id")),Integer.parseInt(request.getParameter("id_imagen")),nombre);
+                if (imagen.eliminar() > 0) {
+                         response.sendRedirect("/Tienda/images-managment-admin");
+                } else {
+                    out.println("<script>alert('Error');</scrpt>");
+                }
+            } else {
+                out.println("<script>alert('Error');</script>");
+            }
+              out.println("</body>");
             out.println("</html>");
         }
     }

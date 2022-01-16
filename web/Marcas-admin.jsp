@@ -16,7 +16,7 @@
     int accessImages = (int) actual.getAttribute("accessImages");
 
     session.setMaxInactiveInterval(900);
-    if ((actual.getAttribute("Logueado") != null)) {
+    if ((actual.getAttribute("Logueado") != null)&&(accessMarcas!=0)) {
 %>
 <%@page import="Models.marcasAdmin"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>

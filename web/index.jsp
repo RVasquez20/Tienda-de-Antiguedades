@@ -4,6 +4,7 @@
     Author     : rodri
 --%>
 
+<%@page import="Models.Productos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -116,7 +117,12 @@
                         <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
                             <div class="count-box">
                                 <i class="bi bi-list"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="8500" data-purecounter-duration="1" class="purecounter"></span>
+                                <%
+                                Productos productosDisponibles=new Productos();
+                                int Cantidad=productosDisponibles.cantidadProductosExistentes();
+                                out.println("<span data-purecounter-start='0' data-purecounter-end='"+Cantidad+"' data-purecounter-duration='1' class='purecounter'></span>");
+                                %>
+                                
                                 <p><strong>Articulos Disponibles</strong></p>
                             </div>
                         </div>
@@ -153,6 +159,7 @@
                                 </p>
                             </div>
                         </div>
+                        
 
                         <div class="col d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
@@ -227,24 +234,24 @@
                         <div class="col-lg-6">
                             <div class="info-box mb-4">
                                 <i class="bx bx-map"></i>
-                                <h3>Our Address</h3>
-                                <p>A108 Adam Street, New York, NY 535022</p>
+                                <h3>Direccion</h3>
+                                <p>Aldea San Felipe de Jesús, Calle al Hospital Nacional No. 61A. La Antigua Guatemala, Sacatepequez</p>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-6">
                             <div class="info-box  mb-4">
                                 <i class="bx bx-envelope"></i>
-                                <h3>Email Us</h3>
-                                <p>contact@example.com</p>
+                                <h3>Email</h3>
+                                <p>antiguedadeslaantaniona@gmail.com</p>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-6">
                             <div class="info-box  mb-4">
                                 <i class="bx bx-phone-call"></i>
-                                <h3>Call Us</h3>
-                                <p>+1 5589 55488 55</p>
+                                <h3>LLamanos</h3>
+                                <p>3267-2768</p>
                             </div>
                         </div>
 
@@ -272,17 +279,18 @@
 
                         <div class="col-lg-4 col-md-6">
                             <div class="footer-info">
-                                <h3>Squadfree</h3>
-                                <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam excepturi quod.</em></p>
+                                <h3>La Antañona</h3>
+                                <p class="pb-3"><em>Somos una tienda que se dedica a la compra y venta de artículos antiguos, coleccionables, vintage, curiosidades etc....</em></p>
                                 <p>
-                                    A108 Adam Street <br>
-                                    NY 535022, USA<br><br>
-                                    <strong>Phone:</strong> +1 5589 55488 55<br>
-                                    <strong>Email:</strong> info@example.com<br>
+                                    Aldea San Felipe de Jesús<br>
+                                    Calle al Hospital Nacional No. 61A. La Antigua Guatemala
+                                    <br>Sacatepequez.<br>
+                                    <strong>Telefono:</strong> 3267-2768 <br>
+                                    <strong>Email:</strong> antiguedadeslaantaniona@gmail.com<br>
                                 </p>
                                 <div class="social-links mt-3">
                                     <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                    <a style="color:white;"href="#" class="facebook"><i  class="fab fa-facebook-square"></i></i></a>
+                                    <a style="color:white;"href="https://www.facebook.com/antigua.biznet.9" class="facebook"><i  class="fab fa-facebook-square"></i></i></a>
                                     <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                                     <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                                     <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
@@ -291,13 +299,16 @@
                         </div>
 
                         <div class="col-lg-2 col-md-6 footer-links">
-                            <h4>Useful Links</h4>
+                            <h4>Links</h4>
                             <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#hero">Inicio</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#about">Acerca de Nosotros</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#services">Servicios</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="articulos-disponibles">Articulos</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="contacto">Contacto</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">FAQs</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos del Servicio</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Politicas de Privacidad</a></li>
                             </ul>
                         </div>
 
