@@ -8,10 +8,9 @@
 <%@page import="Models.Productos"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="Models.Categorias"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% 
-String filtro="prueba";
-%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -101,25 +100,52 @@ String filtro="prueba";
                                   Productos producto=new Productos();
         DefaultTableModel tabla = new DefaultTableModel();
         tabla = producto.leer();
-        out.println("<div class='row portfolio-container' data-aos='fade-up'>");
+            out.println("<div class='row portfolio-container' data-aos='fade-up'>");
         for (int t=0;t<tabla.getRowCount();t++){
-            out.println(" <form action='sr_prueba' method='post' class='form-group'>");
-            out.println("<div class='col-lg-4 col-md-6 portfolio-item "+tabla.getValueAt(t,1)+" '>");
-            out.println("<button name='btn_agregar' id='btn_agregar' style='border: none;'  value='agregar' >");
-            out.println("<input type='hidden' name='txt_id_Marcas' id='txt_id_Marcas' class='form-control' value='"+tabla.getValueAt(t,0)+"'/>");
+            out.println(" <div class='col-md-4' >");
+            out.println(" <a href='detalles-producto?accion=ver&id="+tabla.getValueAt(t,0)+"' style='text-decoration:none;text-align: center;'>");
+            out.println(" <div class='card portfolio-item "+tabla.getValueAt(t,1)+" ' style='width:400px'>");
+            out.println(" <div class='card-header'>");
+            out.println(" <h2>"+tabla.getValueAt(t,3)+"</h2>");
+            out.println("</div>");
+            out.println("<div class='card-img center-block'>");
+            out.println("<input type='hidden' name='txt_id_productos' id='txt_id_productos' class='form-control' value=''/>");
 
             out.println("<img src='assets/img/"+tabla.getValueAt(t,2)+"' name='imagen de prueba' class='img-fluid'"
-                    + " style='max-width: 410px;height: 310px;' alt=''/> ");
-            out.println("</button>");
-            out.println("</div>");
-            out.println("</form>");
-        
+                    + " style='width: 400px;height:400px;margin:auto;display:block;' alt=''/> ");
+            out.println(" </div>");
+            out.println("<div class='card-footer'>");
+            out.println("<h5>"+tabla.getValueAt(t,4)+"</h5>");
+        out.println(" <h4>Q. "+tabla.getValueAt(t,5)+"</h4>");
+        out.println(" </div>");
+        out.println(" </div>");
+        out.println(" </a>");
+        out.println(" </div>");
         }
         out.println(" </div>");
+ 
         %>
-                   
-                    
+      
+   
+      
+        
+          
+            
+              
+                
+                  
+                
+                
+                  
+               
+                
+                  
+      
+        
 
+     
+           
+            
                         
                             
                                 
@@ -145,7 +171,7 @@ String filtro="prueba";
 
         </main><!-- End #main -->
 
-        <!-- ======= Footer ======= -->
+       <!-- ======= Footer ======= -->
         <footer id="footer">
             <div class="footer-top">
                 <div class="container">
@@ -153,17 +179,18 @@ String filtro="prueba";
 
                         <div class="col-lg-4 col-md-6">
                             <div class="footer-info">
-                                <h3>Squadfree</h3>
-                                <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam excepturi quod.</em></p>
+                                <h3>La Antañona</h3>
+                                <p class="pb-3"><em>Somos una tienda que se dedica a la compra y venta de artículos antiguos, coleccionables, vintage, curiosidades etc....</em></p>
                                 <p>
-                                    A108 Adam Street <br>
-                                    NY 535022, USA<br><br>
-                                    <strong>Phone:</strong> +1 5589 55488 55<br>
-                                    <strong>Email:</strong> info@example.com<br>
+                                    Aldea San Felipe de Jesús<br>
+                                    Calle al Hospital Nacional No. 61A. La Antigua Guatemala
+                                    <br>Sacatepequez.<br>
+                                    <strong>Telefono:</strong> 3267-2768 <br>
+                                    <strong>Email:</strong> antiguedadeslaantaniona@gmail.com<br>
                                 </p>
                                 <div class="social-links mt-3">
                                     <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                    <a style="color:white;"href="#" class="facebook"><i  class="fab fa-facebook-square"></i></i></a>
+                                    <a style="color:white;"href="https://www.facebook.com/antigua.biznet.9" class="facebook"><i  class="fab fa-facebook-square"></i></i></a>
                                     <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                                     <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                                     <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
@@ -172,32 +199,27 @@ String filtro="prueba";
                         </div>
 
                         <div class="col-lg-2 col-md-6 footer-links">
-                            <h4>Useful Links</h4>
+                            <h4>Links</h4>
                             <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#hero">Inicio</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#about">Acerca de Nosotros</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#services">Servicios</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="articulos-disponibles">Articulos</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="contacto">Contacto</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">FAQs</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Terminos del Servicio</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Politicas de Privacidad</a></li>
                             </ul>
                         </div>
 
-                        <div class="col-lg-2 col-md-6 footer-links">
-                            <h4>Our Services</h4>
-                            <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                            </ul>
-                        </div>
+                        
 
                         <div class="col-lg-4 col-md-6 footer-newsletter">
-                            <h4>Our Newsletter</h4>
-                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                            <h4>Nuestro Boletin</h4>
+                            <p>Suscribete a nuestro boletin semanal para estar enterado de nuevos
+                            articulos y ofertas disponibles y gana cupones de descuento con tus compras</p>
                             <form action="" method="post">
-                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                                <input type="email" name="email"><input type="submit" value="Suscribirse">
                             </form>
 
                         </div>
@@ -208,7 +230,7 @@ String filtro="prueba";
 
             <div class="container">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>RV.Enterprises</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>RD.Enterprises</span></strong>. All Rights Reserved
                 </div>
                
             </div>

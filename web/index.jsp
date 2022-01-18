@@ -15,8 +15,7 @@
 
 
         <!-- Favicons -->
-        <link href="assets/img/favicon.png" rel="icon">
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="assets/img/La Antañona.png" rel="icon">
         <script src="https://kit.fontawesome.com/a336d9cb6c.js" crossorigin="anonymous"></script>
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -226,12 +225,12 @@
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-title">
-                        <h2>Contact</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <h2>Contacto</h2>
+                        
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="info-box mb-4">
                                 <i class="bx bx-map"></i>
                                 <h3>Direccion</h3>
@@ -239,7 +238,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="info-box  mb-4">
                                 <i class="bx bx-envelope"></i>
                                 <h3>Email</h3>
@@ -247,7 +246,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="info-box  mb-4">
                                 <i class="bx bx-phone-call"></i>
                                 <h3>LLamanos</h3>
@@ -299,7 +298,7 @@
                         </div>
 
                         <div class="col-lg-2 col-md-6 footer-links">
-                            <h4>Links</h4>
+                            <h4 style="text-align: center;">Links</h4>
                             <ul>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#hero">Inicio</a></li>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#about">Acerca de Nosotros</a></li>
@@ -312,22 +311,14 @@
                             </ul>
                         </div>
 
-                        <div class="col-lg-2 col-md-6 footer-links">
-                            <h4>Our Services</h4>
-                            <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                            </ul>
-                        </div>
+                        
 
                         <div class="col-lg-4 col-md-6 footer-newsletter">
-                            <h4>Our Newsletter</h4>
-                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                            <h2>Nuestro Boletin</h2>
+                            <p>Suscribete a nuestro boletin semanal para estar enterado de nuevos
+                            articulos y ofertas disponibles y gana cupones de descuento con tus compras</p>
                             <form action="" method="post">
-                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                                <input type="email" name="email"><input type="submit" value="Suscribirse">
                             </form>
 
                         </div>
@@ -338,7 +329,7 @@
 
             <div class="container">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>RV.Enterprises</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>RD.Enterprises</span></strong>. All Rights Reserved
                 </div>
                
             </div>

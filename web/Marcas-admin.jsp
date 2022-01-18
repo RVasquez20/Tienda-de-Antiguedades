@@ -34,7 +34,7 @@
         <link rel="stylesheet" type="text/css" href="Contact/css/comun.css">
         <script src="https://kit.fontawesome.com/d34e9eb680.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="assets/js/AllInOne.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
@@ -83,7 +83,7 @@
                             <input type="text" name="txt_Marca" id="txt_Marca" class="form-control" placeholder="Ejemplo: Pepsi" onkeypress="return text(event);" required>
 
                             <br>
-                            <button name="btn_agregar" id="btn_agregar"  value="agregar" class="btn btn-primary btn-lg" >Agregar</button>
+                            <button name="btn_agregar" id="btn_agregar"  value="agregar" class="btn btn-primary btn-lg" onclick="Agregado();">Agregar</button>
                             <button name="btn_modificar" id="btn_modificar"  value="modificar" class="btn btn-success btn-lg">Modificar</button>
                             <button name="btn_eliminar" id="btn_eliminar"  value="eliminar" class="btn btn-danger btn-lg" onclick="javascript:if (!confirm('¿Desea Eliminar?'))
                                         return false" >Eliminar</button>

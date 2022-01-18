@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author rodri
  */
-@WebServlet(name = "sr_prueba", urlPatterns = {"/sr_prueba"})
-public class sr_prueba extends HttpServlet {
+@WebServlet(name = "servlet_detalles", urlPatterns = {"/detalles-producto"})
+public class servlet_detalles extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,16 +41,19 @@ public class sr_prueba extends HttpServlet {
             
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet sr_prueba at " + request.getContextPath() + "</h1>");
-            
-             out.println("<h1>Servlet sr_prueba at " + request.getContextPath() + "</h1>");
-             if("agregar".equals(request.getParameter("btn_agregar"))){
-               
-               int id_producto=Integer.parseInt(request.getParameter("txt_id_Marcas"));
-                    //response.sendRedirect("productoDetails.jsp"); 
+            String Accion=request.getParameter("accion");
+      switch(Accion){
+          case "ver":{
+                 int id_producto=Integer.parseInt(request.getParameter("id"));
                      request.setAttribute("id_producto",id_producto );
-                  request.getRequestDispatcher("productoDetails.jsp").forward(request, response);
-           }
+                       request.getRequestDispatcher("productoDetails.jsp").forward(request, response);
+                       break;
+          }
+          default:{
+             response.sendRedirect("/Tienda/articulos-disponibles"); 
+              break;
+          }
+             }
             out.println("</body>");
             out.println("</html>");
         }

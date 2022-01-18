@@ -152,6 +152,32 @@ function LimpiarMarcas() {
     $("#btn_eliminar").hide();
    
 };
+function Agregaar(){
+swal("Marca Agregrada Correctamente", {
+    icon: "success",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/marcas-managment-admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/marcas-managment-admin";
+                        break;
+  }
+});
+
+
+}
 
 function LimpiarCategorias() {
     $("#txt_id_categorias").val(0);

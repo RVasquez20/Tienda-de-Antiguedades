@@ -134,16 +134,23 @@ public Productos(int id_producto, int id_marca, int id_categoria,int id_existenc
         try {
             con = new Conexion();
             con.abrirConexion();
-            String query = "select p.id_Producto as id,c.categoria as categoria,p.imagen_Inicial as url from "
-                    + " productos p inner join categoria c inner join existencias q on p.id_Categoria=c.id_Category and p.id_Existencia=q.id_Existencia and q.cantidadInStock>0";
+            String query = "select p.id_Producto as id,c.categoria as categoria,p.imagen_Inicial as url,p.nombre as nombre ,\n" +
+"p.descripcion as descripcion,p.precio as precio from \n" +
+"productos p inner join categoria c inner join existencias q \n" +
+"on p.id_Categoria=c.id_Category \n" +
+"and p.id_Existencia=q.id_Existencia \n" +
+"and q.cantidadInStock>0";
             ResultSet consulta = con.conexionbd.createStatement().executeQuery(query);
-            String encabezado[] = {"id", "categoria", "url"};
+            String encabezado[] = {"id", "categoria", "url","nombre","descripcion","precio"};
             tabla.setColumnIdentifiers(encabezado);
-            String datos[] = new String[4];
+            String datos[] = new String[6];
             while (consulta.next()) {
                 datos[0] = consulta.getString("id");
                 datos[1] = consulta.getString("categoria");
                 datos[2] = consulta.getString("url");
+                datos[3] = consulta.getString("nombre");
+                datos[4] = consulta.getString("descripcion");
+                datos[5] = consulta.getString("precio");
                 tabla.addRow(datos);
 
             }
