@@ -317,8 +317,9 @@
                             <h2>Nuestro Boletin</h2>
                             <p>Suscribete a nuestro boletin semanal para estar enterado de nuevos
                             articulos y ofertas disponibles y gana cupones de descuento con tus compras</p>
-                            <form action="" method="post">
-                                <input type="email" name="email"><input type="submit" value="Suscribirse">
+                            <form action="servlet_emails" method="post">
+                                <input type="email" style="border-radius: 10px;" placeholder="email@email.com" name="email"  >
+                                <input style="border-radius: 10px;" type="submit" name="Suscribirse" value="Suscribirse">
                             </form>
 
                         </div>

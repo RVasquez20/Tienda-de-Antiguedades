@@ -179,6 +179,36 @@ parent.location.href="/Tienda/marcas-managment-admin";
 
 }
 
+
+
+function ClienteNuevo(){
+swal("Suscripcion Realizada Correctamente", {
+    icon: "success",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/home";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/home";
+                        break;
+  }
+});
+
+
+}
+
+
 function LimpiarCategorias() {
     $("#txt_id_categorias").val(0);
     $("#txt_categoria").val('');
