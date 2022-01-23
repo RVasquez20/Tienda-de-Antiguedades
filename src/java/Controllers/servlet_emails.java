@@ -41,6 +41,7 @@ public class servlet_emails extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String email = request.getParameter("email");
+            
             clienteNuevo = new Clientes();
             clienteNuevo.setEmail(email);
             if ("Suscribirse".equals(request.getParameter("Suscribirse"))) {

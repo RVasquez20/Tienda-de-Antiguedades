@@ -6,6 +6,7 @@
 package Models;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -44,4 +45,31 @@ public class Clientes {
         }
       
     }
+     
+      public int verificarClienteExiste(){
+        int retorno=0;
+        try {
+            con=new Conexion();
+            PreparedStatement parametro;
+            
+            String query="SELECT exists(select * from cliente where Email=?);";
+            con.abrirConexion();
+            parametro=(PreparedStatement)con.conexionbd.prepareStatement(query);
+            parametro.setString(1, this.getEmail());
+            ResultSet rs = parametro.executeQuery();
+            if (rs.next()) {
+
+                retorno = 1;
+
+            }
+             
+            con.cerrarConexion(); 
+            return retorno;
+        } catch (SQLException e) {
+            System.out.println("Error al verificar cliente->"+e.getMessage());
+              return retorno;
+        }
+      
+    }
+     
 }

@@ -4,6 +4,10 @@
         <servlet-name>servlet_emails</servlet-name>
         <url-pattern>/servlet_emails</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servlet_enviar</servlet-name>
+        <url-pattern>/servlet_enviar</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -16,6 +20,10 @@
     <servlet>
         <servlet-name>servlet_emails</servlet-name>
         <servlet-class>Controllers.servlet_emails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>servlet_enviar</servlet-name>
+        <servlet-class>Controllers.servlet_enviar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Productos</servlet-name>

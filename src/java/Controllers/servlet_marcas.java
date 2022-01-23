@@ -39,7 +39,7 @@ public class servlet_marcas extends HttpServlet {
             marcasAdmin marca=new marcasAdmin(Integer.parseInt(request.getParameter("txt_id_Marcas")),request.getParameter("txt_Marca"));
             if("agregar".equals(request.getParameter("btn_agregar"))){
                
-               //if(marca.agregar()>0){
+               if(marca.agregar()>0){
                       out.println("<!DOCTYPE html>");
                 out.println("<html lang='es'>");
                 out.println("<head>");
@@ -61,9 +61,9 @@ public class servlet_marcas extends HttpServlet {
                 out.println("</body></html>");
 
                     //response.sendRedirect("/Tienda/marcas-managment-admin"); 
-              // }else{
-               //    out.println("<script>alert('Error');</scrpt>");
-               //}
+              }else{
+                 out.println("<script>alert('Error');</scrpt>");
+             }
            }
           
               if("modificar".equals(request.getParameter("btn_modificar"))){

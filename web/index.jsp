@@ -65,7 +65,7 @@
         <!-- ======= Hero Section ======= -->
         <section id="hero" >
             <div class="hero-container" data-aos="fade-up">
-                <h1 style="color:#FBD967;text-transform: none;">Antiguedades y Artículos de Colección</h1><br>
+                <h1  style="color:#FBD967;text-transform: none;">Antiguedades y Artículos de Colección</h1><br>
                 <h2 style="color:#FBD967;text-transform: none; font-size: 24px;">Nos especializamos
                     en la compra y venta de todo tipo de  artículos antiguos y de colección.</h2>
                 <a href="#about" class="btn-get-started scrollto"><img src="assets/img/save.svg" style="max-width: 32px; margin-bottom: 7px;"/></a>

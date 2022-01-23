@@ -177,7 +177,7 @@ parent.location.href="/Tienda/marcas-managment-admin";
 });
 
 
-}
+};
 
 
 
@@ -206,7 +206,33 @@ parent.location.href="/Tienda/home";
 });
 
 
-}
+};
+
+
+function Contacto(){
+swal("Contacto realizado Correctamente se le respondera pronto :D", {
+    icon: "success",
+  buttons: {
+    Aceptar: {
+        text:"Aceptar!",
+        value: "Aceptar"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "Aceptar":
+parent.location.href="/Tienda/home";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/home";
+                        break;
+  }
+});
+};
 
 
 function LimpiarCategorias() {

@@ -13,6 +13,10 @@ body {
   color: #444444;
 }
 
+
+
+
+
 a {
   text-decoration: none;
   color: #EFA973;
@@ -157,6 +161,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
   background: rgba(255, 255, 255, 0.2);
+  color: #EFA973;
 }
 .navbar .dropdown ul {
   display: block;
@@ -343,7 +348,7 @@ p{
   margin: 0 0 10px 0;
   font-size: 64px;
   font-weight: 700;
-  line-height: 56px;
+  
   text-transform: uppercase;
   color: #fff;
   text-shadow: -1px 0 2px #2f4d5a;
