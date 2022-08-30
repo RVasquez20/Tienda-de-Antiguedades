@@ -189,12 +189,12 @@
                                     Aldea San Felipe de Jesús<br>
                                     Calle al Hospital Nacional No. 61A. La Antigua Guatemala
                                     <br>Sacatepequez.<br>
-                                    <strong>Telefono:</strong> 3267-2768 <br>
+                                    <strong>Telefono:</strong>+502 3267-2768 <br>
                                     <strong>Email:</strong> antiguedadeslaantaniona@gmail.com<br>
                                 </p>
                                 <div class="social-links mt-3">
                                     <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                    <a style="color:white;"href="https://www.facebook.com/antigua.biznet.9" class="facebook"><i  class="fab fa-facebook-square"></i></i></a>
+                                    <a style="color:white;"href="https://www.facebook.com/Antiguedadees" class="facebook"><i  class="fab fa-facebook-square"></i></i></a>
                                     <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                                     <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                                     <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>

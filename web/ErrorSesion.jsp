@@ -17,15 +17,40 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        
-
-<title>Permisos Insuficientes</title>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="assets/js/AllInOne.js" type="text/javascript"></script>
+<title>Error Sesion Finalizada</title>
+<script>
+            $(document).ready(function(){
+                    ErrorSesion();
+               });
+            </script>
+            <style>
+                .swal-button--OK{
+              background-color: #FF0000;
+              font-size: 18px;
+  }
+                  .swal-button:not([disabled]):hover{
+                    
+              background: linear-gradient(270deg, rgba(0,0,0,0.3393732492997199) 0%, rgba(255,0,0,0.6671043417366946) 0%);
+  }
+  .swal-overlay {
+background: linear-gradient(270deg, rgba(0,0,0,0.3393732492997199) 0%, rgba(255,0,0,0.6671043417366946) 0%);
+}
+  .swal-icon--error__line  {
+background-color: #FF0000;
+}
+.swal-title{
+    color: #FF0000;
+}
+ 
+.swal-icon--error {
+    border-color: #FF0000;
+}
+                </style>
+    </head>
     </head>
     <body>
 
-  <script>
-alert("Permisos Insuficientes \n Regresando");
-setTimeout("location.href='Principal.jsp'",100);
-</script>
     </body>
 </html>

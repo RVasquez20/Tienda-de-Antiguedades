@@ -10,13 +10,14 @@
     String Usuario = (String) actual.getAttribute("Logueado");
     String Nombre = (String) actual.getAttribute("name");
     String Apellido = (String) actual.getAttribute("lastName");
-    int accessMarcas = (int) actual.getAttribute("accessProducts");
-    int accessProducts = (int) actual.getAttribute("accessMarcas");
-    int accessCategories = (int) actual.getAttribute("accessCategories");
-    int accessImages = (int) actual.getAttribute("accessImages");
-
+    String accessMarcas = (String) actual.getAttribute("accessMarcas");
+    String accessProducts = (String) actual.getAttribute("accessProducts");
+    String accessCategories = (String) actual.getAttribute("accessCategories");
+    String accessImages = (String) actual.getAttribute("accessImages");
     session.setMaxInactiveInterval(900);
-    if ((actual.getAttribute("Logueado") != null)&&(accessMarcas!=0)) {
+    
+    if ((actual.getAttribute("Logueado") != null)) {
+        if((!accessMarcas.equals("0"))){
 %>
 <%@page import="Models.marcasAdmin"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>
@@ -97,16 +98,16 @@
                             
            out.println("<li><a href='/Tienda/home-admin'>Inicio</a></li><br>");
                             
-                            if (accessMarcas == 1) {
+                            if (accessMarcas .equals("1")) {
                                 out.println("<li><a href='/Tienda/marcas-managment-admin'>Marcas</a></li><br>");
                             }
-                            if (accessProducts == 1) {
+                            if (accessProducts .equals("1")) {
                                 out.println("<li><a href='/Tienda/products-managment-admin'> Productos</a></li><br>");
                             }
-                            if (accessCategories == 1) {
+                            if (accessCategories .equals("1")) {
                                 out.println("<li><a href='/Tienda/categories-managment-admin'> Categorias</a></li><br>");
                             }
-                            if (accessImages == 1) {
+                            if (accessImages .equals("1")) {
                                 out.println("<li><a href='/Tienda/images-managment-admin'> Imagenes</a></li><br>");
                             }
                         %>
@@ -228,9 +229,15 @@
 
     </body>
 </html>
-<%    } else {
+<%    
+  }else {
 
-        response.sendRedirect("Error.jsp");
+        response.sendRedirect("/Tienda/Error-Sesion-Permisos");
+
+    }
+ }else {
+
+        response.sendRedirect("/Tienda/Error-Sesion-Invalida");
 
     }
 %>

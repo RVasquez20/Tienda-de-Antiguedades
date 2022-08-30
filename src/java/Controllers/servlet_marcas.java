@@ -43,7 +43,7 @@ public class servlet_marcas extends HttpServlet {
                       out.println("<!DOCTYPE html>");
                 out.println("<html lang='es'>");
                 out.println("<head>");
-                out.println("<title>Constancia de Registro</title>");
+                out.println("<title>Exito</title>");
                 out.println("<meta charset='utf-8'>");
                 out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
                 out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
@@ -62,25 +62,115 @@ public class servlet_marcas extends HttpServlet {
 
                     //response.sendRedirect("/Tienda/marcas-managment-admin"); 
               }else{
-                 out.println("<script>alert('Error');</scrpt>");
+                              out.println("<!DOCTYPE html>");
+                out.println("<html lang='es'>");
+                out.println("<head>");
+                out.println("<title>Error</title>");
+                out.println("<meta charset='utf-8'>");
+                out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+            out.println("\n" +
+"        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+             out.println("<script type=\"text/javascript\">");
+                    out.println("$(document).ready(function(){");
+                    out.println("ErrorMarca();");
+                out.println("});");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body></html>");
              }
            }
           
               if("modificar".equals(request.getParameter("btn_modificar"))){
               
                if(marca.modificar()>0){
-                    response.sendRedirect("/Tienda/marcas-managment-admin"); 
+                          out.println("<!DOCTYPE html>");
+                out.println("<html lang='es'>");
+                out.println("<head>");
+                out.println("<title>Exito</title>");
+                out.println("<meta charset='utf-8'>");
+                out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+            out.println("\n" +
+"        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+             out.println("<script type=\"text/javascript\">");
+                    out.println("$(document).ready(function(){");
+                    out.println("modificarMarca();");
+                out.println("});");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body></html>");
                }else{
-                   out.println("<script>alert('Error');</scrpt>");
+                                out.println("<!DOCTYPE html>");
+                out.println("<html lang='es'>");
+                out.println("<head>");
+                out.println("<title>Error</title>");
+                out.println("<meta charset='utf-8'>");
+                out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+            out.println("\n" +
+"        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+             out.println("<script type=\"text/javascript\">");
+                    out.println("$(document).ready(function(){");
+                    out.println("ErrorMarca();");
+                out.println("});");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body></html>");
                }
            }
               
                  if("eliminar".equals(request.getParameter("btn_eliminar"))){
               
                if(marca.eliminar()>0){
-                    response.sendRedirect("/Tienda/marcas-managment-admin"); 
+                               out.println("<!DOCTYPE html>");
+                out.println("<html lang='es'>");
+                out.println("<head>");
+                out.println("<title>Exito</title>");
+                out.println("<meta charset='utf-8'>");
+                out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+            out.println("\n" +
+"        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+             out.println("<script type=\"text/javascript\">");
+                    out.println("$(document).ready(function(){");
+                    out.println("eliminarMarca();");
+                out.println("});");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body></html>");
                }else{
-                   out.println("<script>alert('Error');</scrpt>");
+                              out.println("<!DOCTYPE html>");
+                out.println("<html lang='es'>");
+                out.println("<head>");
+                out.println("<title>Error</title>");
+                out.println("<meta charset='utf-8'>");
+                out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+            out.println("\n" +
+"        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+             out.println("<script type=\"text/javascript\">");
+                    out.println("$(document).ready(function(){");
+                    out.println("ErrorMarca();");
+                out.println("});");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body></html>");
                }
            }
            

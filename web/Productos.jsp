@@ -90,7 +90,7 @@
                 Categorias categoria=new Categorias();
                HashMap<String,String> dropCategoria = categoria.listadoDeCategoriasConProductos();
                          for (String i: dropCategoria.keySet()){
-                             out.println("<li data-filter='."+dropCategoria.get(i)+"'>"+dropCategoria.get(i)+"</li>");
+                             out.println("<li data-filter='."+dropCategoria.get(i).replace(" ", "_")+"'>"+dropCategoria.get(i)+"</li>");
                          }
                 %>
                             </ul>
@@ -104,7 +104,7 @@
         for (int t=0;t<tabla.getRowCount();t++){
             out.println(" <div class='col-md-4' >");
             out.println(" <a href='detalles-producto?accion=ver&id="+tabla.getValueAt(t,0)+"' style='text-decoration:none;text-align: center;'>");
-            out.println(" <div class='card portfolio-item "+tabla.getValueAt(t,1)+" ' style='width:400px'>");
+            out.println(" <div class='card portfolio-item "+tabla.getValueAt(t,1).toString().replace(" ", "_")+" ' style='width:400px'>");
             out.println(" <div class='card-header'>");
             out.println(" <h2>"+tabla.getValueAt(t,3)+"</h2>");
             out.println("</div>");
@@ -185,12 +185,12 @@
                                     Aldea San Felipe de Jesús<br>
                                     Calle al Hospital Nacional No. 61A. La Antigua Guatemala
                                     <br>Sacatepequez.<br>
-                                    <strong>Telefono:</strong> 3267-2768 <br>
+                                    <strong>Telefono:</strong>+502 3267-2768 <br>
                                     <strong>Email:</strong> antiguedadeslaantaniona@gmail.com<br>
                                 </p>
                                 <div class="social-links mt-3">
                                     <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                    <a style="color:white;"href="https://www.facebook.com/antigua.biznet.9" class="facebook"><i  class="fab fa-facebook-square"></i></i></a>
+                                    <a style="color:white;"href="https://www.facebook.com/Antiguedadees" class="facebook"><i  class="fab fa-facebook-square"></i></i></a>
                                     <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                                     <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                                     <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>

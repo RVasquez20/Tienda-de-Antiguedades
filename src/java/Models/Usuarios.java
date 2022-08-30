@@ -74,7 +74,15 @@ public class Usuarios {
 
     public int validarUserPassword(String usuario, String pass, String key) {
         int retorno = 0;
-
+        String[] caracteres={","," ","\\","=","'","(",")","-","_",";","+","*","\"","&","!"};
+        for (String escape : caracteres) {
+            System.out.println(escape);
+          usuario=usuario.replace(escape, ".");  
+          pass=pass.replace(escape, ".");  
+          key=key.replace(escape, ".");  
+          
+        }
+            System.out.println(pass);
         try {
             con = new Conexion();
             con.abrirConexion();
@@ -140,8 +148,8 @@ public class Usuarios {
         return retorno;
     }
 
-    public int accessMarcas(String usuario) throws SQLException {
-        int retorno = 0;
+    public String accessMarcas(String usuario) throws SQLException {
+        String retorno = null;
 
         con = new Conexion();
         con.abrirConexion();
@@ -151,15 +159,15 @@ public class Usuarios {
         ResultSet rs = parametro.executeQuery();
 
         while (rs.next()) {
-            retorno = rs.getInt("Marcas");
+            retorno = rs.getString("Marcas");
         }
         con.cerrarConexion();
 
         return retorno;
     }
 
-    public int accessProducts(String usuario) throws SQLException {
-        int retorno = 0;
+    public String accessProducts(String usuario) throws SQLException {
+        String retorno = null;
 
         con = new Conexion();
         con.abrirConexion();
@@ -169,15 +177,15 @@ public class Usuarios {
         ResultSet rs = parametro.executeQuery();
 
         while (rs.next()) {
-            retorno = rs.getInt("Productos");
+            retorno = rs.getString("Productos");
         }
         con.cerrarConexion();
 
         return retorno;
     }
 
-    public int accessCategory(String usuario) throws SQLException {
-        int retorno = 0;
+    public String accessCategory(String usuario) throws SQLException {
+        String retorno = null;
 
         con = new Conexion();
         con.abrirConexion();
@@ -187,15 +195,15 @@ public class Usuarios {
         ResultSet rs = parametro.executeQuery();
 
         while (rs.next()) {
-            retorno = rs.getInt("Categorias");
+            retorno = rs.getString("Categorias");
         }
         con.cerrarConexion();
 
         return retorno;
     }
 
-        public int accessImages(String usuario) throws SQLException {
-        int retorno = 0;
+        public String accessImages(String usuario) throws SQLException {
+        String retorno = null;
 
         con = new Conexion();
         con.abrirConexion();
@@ -205,11 +213,15 @@ public class Usuarios {
         ResultSet rs = parametro.executeQuery();
 
         while (rs.next()) {
-            retorno = rs.getInt("Imagenes");
+            retorno = rs.getString("Imagenes");
         }
         con.cerrarConexion();
 
         return retorno;
+    }
+
+    private void procesamientoDeCadenas(String[] caracteres, String usuario, String pass, String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

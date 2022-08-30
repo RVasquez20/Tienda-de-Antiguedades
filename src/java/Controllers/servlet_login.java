@@ -49,7 +49,7 @@ public class servlet_login extends HttpServlet {
                 if(users.validarUserPassword(user,pass,key) > 0) {
                      String nombre=users.name(user);
                      String apellidos=users.lastName(user);
-                     int accessMarcas=0,accessProducts=0,accessCategories=0,accessImages=0;
+                     String accessMarcas=null,accessProducts=null,accessCategories=null,accessImages=null;
                     try {
                         accessMarcas=users.accessMarcas(user);
                    

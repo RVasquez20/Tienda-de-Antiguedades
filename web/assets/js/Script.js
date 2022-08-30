@@ -24,6 +24,9 @@ $seleccionArchivos.addEventListener("change", () => {
   // Y a la fuente de la imagen le ponemos el objectURL
   $imagenPrevisualizacion.src = objectURL;
   $("#imagenPrevisualizacion").removeAttr('hidden'); 
+  let id=document.getElementById("txt_id").value;
+  if(id===0){
   $("#btn_agregar").show();
+  }
 });
 

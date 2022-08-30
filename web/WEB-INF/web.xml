@@ -100,4 +100,22 @@
         <servlet-name>ImagesManagment</servlet-name>
         <url-pattern>/images-managment-admin</url-pattern>
     </servlet-mapping>
+    <!--Error Sesion-->
+    <servlet>
+        <servlet-name>ErrorSesion</servlet-name>
+        <jsp-file>/ErrorSesion.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorSesion</servlet-name>
+        <url-pattern>/Error-Sesion-Invalida</url-pattern>
+    </servlet-mapping>
+    <!--Error Permisos insuficientes-->
+      <servlet>
+        <servlet-name>ErrorSesionPermisos</servlet-name>
+        <jsp-file>/ErrorPermisos.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorSesionPermisos</servlet-name>
+        <url-pattern>/Error-Sesion-Permisos</url-pattern>
+    </servlet-mapping>
 </web-app>

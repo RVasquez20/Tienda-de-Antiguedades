@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -85,9 +86,45 @@ public class servlet_productos extends HttpServlet {
                     }
                     ous.close();
                     is.close();
-                    response.sendRedirect("/Tienda/products-managment-admin");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html lang='es'>");
+                    out.println("<head>");
+                    out.println("<title>Exito</title>");
+                    out.println("<meta charset='utf-8'>");
+                    out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                    out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                    out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+                out.println("\n" +
+    "        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+                 out.println("<script type=\"text/javascript\">");
+                        out.println("$(document).ready(function(){");
+                        out.println("ExitoProducto();");
+                    out.println("});");
+                    out.println("</script>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body></html>"); 
                 } else {
-                    out.println("<script>alert('Error');</scrpt>");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html lang='es'>");
+                    out.println("<head>");
+                    out.println("<title>Error</title>");
+                    out.println("<meta charset='utf-8'>");
+                    out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                    out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                    out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+                out.println("\n" +
+    "        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+                 out.println("<script type=\"text/javascript\">");
+                        out.println("$(document).ready(function(){");
+                        out.println("ErrorProducto();");
+                    out.println("});");
+                    out.println("</script>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body></html>"); 
                 }
 
             } else if ("modificar".equals(request.getParameter("btn_modificar"))) {
@@ -137,10 +174,46 @@ public class servlet_productos extends HttpServlet {
                     }
                     ous.close();
                     is.close();
-                    response.sendRedirect("/Tienda/products-managment-admin");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html lang='es'>");
+                    out.println("<head>");
+                    out.println("<title>Exito</title>");
+                    out.println("<meta charset='utf-8'>");
+                    out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                    out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                    out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+                out.println("\n" +
+    "        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+                 out.println("<script type=\"text/javascript\">");
+                        out.println("$(document).ready(function(){");
+                        out.println("ExitoProductoM();");
+                    out.println("});");
+                    out.println("</script>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body></html>"); 
 
                 } else {
-                    out.println("<script>alert('Error');</scrpt>");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html lang='es'>");
+                    out.println("<head>");
+                    out.println("<title>Error</title>");
+                    out.println("<meta charset='utf-8'>");
+                    out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                    out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                    out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+                out.println("\n" +
+    "        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+                 out.println("<script type=\"text/javascript\">");
+                        out.println("$(document).ready(function(){");
+                        out.println("ErrorProducto();");
+                    out.println("});");
+                    out.println("</script>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body></html>"); 
                 }
             } else if ("modificarguardimagen".equals(request.getParameter("btn_actualizar"))) {
                 producto = new Productos(Integer.parseInt(request.getParameter("txt_id")),
@@ -164,9 +237,45 @@ public class servlet_productos extends HttpServlet {
                 }
             }
                 if (producto.modificar() > 0) {
-                    response.sendRedirect("/Tienda/products-managment-admin");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html lang='es'>");
+                    out.println("<head>");
+                    out.println("<title>Exito</title>");
+                    out.println("<meta charset='utf-8'>");
+                    out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                    out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                    out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+                out.println("\n" +
+    "        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+                 out.println("<script type=\"text/javascript\">");
+                        out.println("$(document).ready(function(){");
+                        out.println("ExitoProductoM();");
+                    out.println("});");
+                    out.println("</script>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body></html>"); 
                 } else {
-                    out.println("<script>alert('Error');</scrpt>");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html lang='es'>");
+                    out.println("<head>");
+                    out.println("<title>Error</title>");
+                    out.println("<meta charset='utf-8'>");
+                    out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                    out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                    out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+                out.println("\n" +
+    "        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+                 out.println("<script type=\"text/javascript\">");
+                        out.println("$(document).ready(function(){");
+                        out.println("ErrorProducto();");
+                    out.println("});");
+                    out.println("</script>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body></html>"); 
                 }
                 /*out.println("<h2>imagenes:"+request.getParameter("imagenes")+"</h2>");
             out.println("<h2>nombreimagen:"+request.getParameter("nombre")+"</h2>");
@@ -184,18 +293,74 @@ public class servlet_productos extends HttpServlet {
             } else if ("eliminar".equals(request.getParameter("btn_eliminar"))) {
 
                 if (producto.eliminar() > 0) {
-                    response.sendRedirect("/Tienda/products-managment-admin");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html lang='es'>");
+                    out.println("<head>");
+                    out.println("<title>Exito</title>");
+                    out.println("<meta charset='utf-8'>");
+                    out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                    out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                    out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+                out.println("\n" +
+    "        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+                 out.println("<script type=\"text/javascript\">");
+                        out.println("$(document).ready(function(){");
+                        out.println("ExitoProductoE();");
+                    out.println("});");
+                    out.println("</script>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body></html>"); 
                 } else {
-                    out.println("<script>alert('Error');</scrpt>");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html lang='es'>");
+                    out.println("<head>");
+                    out.println("<title>Error</title>");
+                    out.println("<meta charset='utf-8'>");
+                    out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                    out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                    out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+                out.println("\n" +
+    "        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+                 out.println("<script type=\"text/javascript\">");
+                        out.println("$(document).ready(function(){");
+                        out.println("ErrorProducto();");
+                    out.println("});");
+                    out.println("</script>");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("</body></html>"); 
                 }
             } else {
-                out.println("<script>alert('Error');</script>");
+                out.println("<!DOCTYPE html>");
+                out.println("<html lang='es'>");
+                out.println("<head>");
+                out.println("<title>Error</title>");
+                out.println("<meta charset='utf-8'>");
+                out.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+                out.println("<link rel='stylesheet'href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>");
+                out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>");
+                out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");   
+            out.println("\n" +
+"        <script src=\"assets/js/AllInOne.js\" type=\"text/javascript\"></script>");
+             out.println("<script type=\"text/javascript\">");
+                    out.println("$(document).ready(function(){");
+                    out.println("ErrorProducto();");
+                out.println("});");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("</body></html>"); 
             }
             out.println("</body>");
             out.println("</html>");
         }
     }
 
+    
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -179,7 +179,86 @@ parent.location.href="/Tienda/marcas-managment-admin";
 
 };
 
+function modificarMarca(){
+swal("Marca Modificada Correctamente", {
+    icon: "success",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/marcas-managment-admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/marcas-managment-admin";
+                        break;
+  }
+});
 
+
+};
+
+function eliminarMarca(){
+swal("Marca Eliminada Correctamente", {
+    icon: "success",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/marcas-managment-admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/marcas-managment-admin";
+                        break;
+  }
+});
+
+
+};
+
+function ErrorMarca(){
+swal("Error Al Realizar La Accion", {
+    icon: "error",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/marcas-managment-admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/marcas-managment-admin";
+                        break;
+  }
+});
+
+
+};
 
 function ClienteNuevo(){
 swal("Suscripcion Realizada Correctamente", {
@@ -207,7 +286,72 @@ parent.location.href="/Tienda/home";
 
 
 };
+function ErrorPermisos(){
+swal({
+    title:"Error Permisos Insuficientes",
+    icon: "error",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+        
+    }
+   
+  }
+          
+})
 
+
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/admin";
+                        break;
+  }
+});
+        
+
+
+
+};
+function ErrorSesion(){
+swal({
+    title:"Error Sesion Finalizada,Logueese nuevamente",
+    icon: "error",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+        
+    }
+   
+  }
+          
+})
+
+
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/admin";
+                        break;
+  }
+});
+        
+
+
+
+};
 
 function Contacto(){
 swal("Contacto realizado Correctamente se le respondera pronto :D", {
@@ -356,3 +500,110 @@ function LimpiarVentasDetalleprod() {
 
 };
 
+function ErrorProducto(){
+swal("Error Al Realizar La Accion", {
+    icon: "error",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/products-managment-admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/products-managment-admin";
+                        break;
+  }
+});
+
+
+};
+
+function ExitoProducto(){
+swal("Producto Agregado Correctamente", {
+    icon: "success",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/products-managment-admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/products-managment-admin";
+                        break;
+  }
+});
+
+
+};
+
+function ExitoProductoM(){
+swal("Producto Modificado Correctamente", {
+    icon: "success",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/products-managment-admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/products-managment-admin";
+                        break;
+  }
+});
+
+
+};
+
+function ExitoProductoE(){
+swal("Producto Eliminado Correctamente", {
+    icon: "success",
+  buttons: {
+    OK: {
+        text:"Ok!",
+        value: "OK"
+    }
+    
+  }
+})
+.then((value) => {
+  switch (value) {
+ 
+    case "OK":
+parent.location.href="/Tienda/products-managment-admin";
+      break;
+                    default :
+                        
+parent.location.href="/Tienda/products-managment-admin";
+                        break;
+  }
+});
+
+
+};
